@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IZMLIB", "IZMLIB\IZMLIB.vcxproj", "{ABC65CD3-B307-4960-BEAD-0ED344DD1009}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABC65CD3-B307-4960-BEAD-0ED344DD1009}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ABC65CD3-B307-4960-BEAD-0ED344DD1009}.Debug|Win32.Build.0 = Debug|Win32
+		{ABC65CD3-B307-4960-BEAD-0ED344DD1009}.Release|Win32.ActiveCfg = Release|Win32
+		{ABC65CD3-B307-4960-BEAD-0ED344DD1009}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
