@@ -1,5 +1,5 @@
-## IZMLIBTest
+# IZMLIBTest
 
-QTestLib‚É‚æ‚éIZMLIB—pƒeƒXƒgƒR[ƒhB
+QTestLibã«ã‚ˆã‚‹IZMLIBç”¨ãƒ†ã‚¹ãƒˆã‚³ãƒ¼ãƒ‰ã€‚
 
-Copyright (c) 2013 ‚¢‚¸‚Ý‚³‚ñ All Rights Reserved.
+Copyright (c) ã„ãšã¿ã•ã‚“ All Rights Reserved.
