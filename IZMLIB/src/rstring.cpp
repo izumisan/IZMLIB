@@ -174,57 +174,37 @@ bool RString::include( const std::string& str ) const
 }
 
 //==============================================================================
-//! @brief  文字列を一文字づつ分割する。
-//! @return 分割された文字列のベクタ
-//==============================================================================
-std::vector<std::string> RString::split() const
-{
-    std::vector<std::string> result;
-    for ( std::string::const_iterator it = this->begin(); it != this->end(); ++it )
-    {
-        result.push_back( &( *it ) );
-    }
-    return result;
-}
-
-//==============================================================================
 //! @brief  デリミタで分割した文字列を返す
-//! @param  [in]  delimiter  デリミタ
+//! @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
 //! @return 分割された文字列のベクタ
 //! @note   連続するデリミタは一つとみなす\n
 //!         (例) "abacdaaefga"を"a"で分割した場合の戻り値->{"b", "cd", "efg"}
 //==============================================================================
-std::vector<std::string> RString::split( const std::string& delimiter ) const
+std::vector<RString> RString::split( const std::string& delimiter ) const
 {
-    std::vector<std::string> result;
-    if ( delimiter.empty() != true )
-    {
-        std::string::size_type currentIdx = 0;
-        std::string::size_type foundIdx = 0;
+    std::vector<RString> result;
+    std::string::size_type currentIdx = 0;
+    std::string::size_type foundIdx = 0;
 
-        while( ( foundIdx = this->find( delimiter, currentIdx ) ) != std::string::npos )
-        {
-            if ( foundIdx != currentIdx )
-            {
-                result.push_back( substr( currentIdx, foundIdx - currentIdx ) );
-                currentIdx = foundIdx + delimiter.size();
-            }
-            // デリミタが連続している場合
-            else
-            {
-                currentIdx += delimiter.size();
-            }
-        }
-        // 残りの回収
-        if ( currentIdx <= this->size() - 1 )
-        {
-            result.push_back( substr( currentIdx, std::string::npos ) );
-        }
-    }
-    else
+    while( ( foundIdx = this->find( delimiter, currentIdx ) ) != std::string::npos )
     {
-        result = this->split();
+        if ( foundIdx != currentIdx )
+        {
+            result.push_back( substr( currentIdx, foundIdx - currentIdx ) );
+            currentIdx = foundIdx + delimiter.size();
+        }
+        // デリミタが連続している場合
+        else
+        {
+            currentIdx += delimiter.size();
+        }
     }
+    // 残りの回収
+    if ( currentIdx <= this->size() - 1 )
+    {
+        result.push_back( substr( currentIdx, std::string::npos ) );
+    }
+
     return result;
 }
 
@@ -367,10 +347,7 @@ RString& RString::rstrip_d()
 }
 
 //==============================================================================
-//! @brief  前後の空白類文字を全て取り除く
-//! @return 前後の空白類文字を全て取り除いた文字列
-//! @note   空白類文字: 空白、書式送り、改行、復帰、水平タブ、垂直タブ\n
-//!         strip()の別名
+//! @note  strip()の別名メソッド
 //==============================================================================
 RString RString::trim() const
 {
@@ -378,11 +355,7 @@ RString RString::trim() const
 }
 
 //==============================================================================
-//! @brief  前後の空白類文字を全て取り除く
-//! @return 前後の空白類文字を全て取り除いた文字列
-//! @note   空白類文字: 空白、書式送り、改行、復帰、水平タブ、垂直タブ\n
-//!         strip()の別名\n
-//!         破壊メソッド
+//! @note   strip_d()の別名メソッド
 //==============================================================================
 RString& RString::trim_d()
 {
@@ -390,10 +363,7 @@ RString& RString::trim_d()
 }
 
 //==============================================================================
-//! @brief  先頭の空白類文字を全て取り除く
-//! @return 先頭の空白類文字を全て取り除いた文字列
-//! @note   空白類文字: 空白、書式送り、改行、復帰、水平タブ、垂直タブ\n
-//!         lstrip()の別名
+//! @note   lstrip()の別名メソッド
 //==============================================================================
 RString RString::ltrim() const
 {
@@ -401,11 +371,7 @@ RString RString::ltrim() const
 }
 
 //==============================================================================
-//! @brief  先頭の空白類文字を全て取り除く
-//! @return 先頭の空白類文字を全て取り除いた文字列
-//! @note   空白類文字: 空白、書式送り、改行、復帰、水平タブ、垂直タブ\n
-//!         lstrip_d()の別名\n
-//!         破壊メソッド
+//! @note   lstrip_d()の別名メソッド
 //==============================================================================
 RString& RString::ltrim_d()
 {
@@ -413,10 +379,7 @@ RString& RString::ltrim_d()
 }
 
 //==============================================================================
-//! @brief  末尾の空白類文字を全て取り除く
-//! @return 末尾の空白類文字を全て取り除いた文字列
-//! @note   空白類文字: 空白、書式送り、改行、復帰、水平タブ、垂直タブ\n
-//!         rstrip()の別名
+//! @note   rstrip()の別名メソッド
 //==============================================================================
 RString RString::rtrim() const
 {
@@ -424,11 +387,7 @@ RString RString::rtrim() const
 }
 
 //==============================================================================
-//! @brief  末尾の空白類文字を全て取り除く
-//! @return 末尾の空白類文字を全て取り除いた文字列
-//! @note   空白類文字: 空白、書式送り、改行、復帰、水平タブ、垂直タブ\n
-//!         rstrip_d()の別名\n
-//!         破壊メソッド
+//! @note   rstrip_d()の別名メソッド
 //==============================================================================
 RString& RString::rtrim_d()
 {

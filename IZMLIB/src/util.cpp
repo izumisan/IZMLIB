@@ -13,7 +13,7 @@ namespace izm
 //==============================================================================
 //! @brief  文字列をデリミタで分割する。
 //! @param  [in]  str        分割する文字列
-//! @param  [in]  delimiter  デリミタ
+//! @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
 //! @return 分割された文字列のベクタ
 //! @note   連続するデリミタは一つとみなす\n
 //!         (例) "abacdaaefga"を"a"で分割した場合の戻り値->{"b", "cd", "efg"}
@@ -88,13 +88,13 @@ std::string ltrim( const std::string& str )
 std::string rtrim( const std::string& str )
 {
     // 空白類文字ではない最後の位置を検索し、
-    // 文字列一文字目から見つかった位置までの文字数分切り出して返す。
+    // 一文字目から見つかった位置までの文字列を切り出す。
 
     std::string result("");
     std::string::size_type foundIdx = str.find_last_not_of(" \f\n\r\t\v");
     if ( foundIdx != std::string::npos )
     {
-        result = str.substr( 0, foundIdx + 1 );  // 一文字目から(foundIdx+1)文字
+        result = str.substr( 0, foundIdx + 1 );  // 見つかった位置までの文字列を切りだす
     }
     return result;
 }

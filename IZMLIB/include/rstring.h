@@ -19,7 +19,7 @@ public:
     explicit RString( const double num );
     RString( const std::string& str );
 
-    ~RString();
+    virtual ~RString();
 
 // 演算子
 public:
@@ -48,8 +48,7 @@ public:
     bool include( const std::string& str ) const;
 
     // 分割
-    std::vector<std::string> split() const;
-    std::vector<std::string> split( const std::string& delimiter ) const;
+    std::vector<RString> split( const std::string& delimiter = " " ) const;
 
     // 改行コードの削除
     RString  chomp() const;
@@ -69,6 +68,7 @@ public:
     RString  rstrip() const;
     RString& rstrip_d();    // 破壊メソッド
 
+    // strip, lstrip, rstripの別名メソッド
     RString  trim() const;
     RString& trim_d();      // 破壊メソッド
 
