@@ -1,5 +1,3 @@
-INCLUDEPATH += ../../IZMLIB/include/
-
 HEADERS += \
     ../../IZMLIB/include/rstring.h
 

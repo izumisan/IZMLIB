@@ -14,7 +14,7 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-CONFIG += testcase
+include(../IZMLIBTest.pri)
 include(utilTest.pri)
 
 SOURCES += tst_utiltest.cpp

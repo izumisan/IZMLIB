@@ -2,4 +2,4 @@
 
 QTestLibによるIZMLIB用テストコード。
 
-Copyright (c) いずみさん All Rights Reserved.
+Copyright (c) 2013 いずみさん All Rights Reserved.

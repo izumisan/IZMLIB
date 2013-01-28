@@ -8,7 +8,7 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-CONFIG += testcase
+include(../IZMLIBTest.pri)
 include(RStringTest.pri)
 
 SOURCES += tst_rstringtest.cpp
