@@ -50,6 +50,9 @@ public:
     // 分割
     std::vector<RString> split( const std::string& delimiter = " " ) const;
 
+    RString dividedLeftPart( const std::string& delimiter = " " ) const;
+    RString dividedRightPart( const std::string& delimiter = " " ) const;
+
     // 改行コードの削除
     RString  chomp() const;
     RString& chomp_d();     // 破壊メソッド

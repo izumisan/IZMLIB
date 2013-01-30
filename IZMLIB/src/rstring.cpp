@@ -209,6 +209,46 @@ std::vector<RString> RString::split( const std::string& delimiter ) const
 }
 
 /*!
+  @brief  デリミタで分割した文字列の左部分を返す
+  @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
+  @return 分割された文字列の左部分
+*/
+RString RString::dividedLeftPart( const std::string& delimiter ) const
+{
+    RString result(*this);
+    std::string::size_type foundIdx = 0;
+    if ( ( foundIdx = this->find( delimiter ) ) != std::string::npos )
+    {
+        result = this->substr( 0, foundIdx );
+    }
+    return result;
+}
+
+/*!
+  @brief  デリミタで分割した文字列の右部分を返す
+  @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
+  @return 分割された文字列の右部分
+*/
+RString RString::dividedRightPart( const std::string& delimiter ) const
+{
+    RString result(*this);
+    std::string::size_type foundIdx = 0;
+    if ( ( foundIdx = this->find( delimiter ) ) != std::string::npos )
+    {
+        std::string::size_type startIdx = foundIdx + delimiter.size();
+        if ( startIdx < this->size() )
+        {
+            result = this->substr( startIdx, std::string::npos );
+        }
+        else
+        {
+            result = RString("");
+        }
+    }
+    return result;
+}
+
+/*!
   @brief  末尾の改行コードを取り除く
   @return 改行コードを取り除いた文字列
 */

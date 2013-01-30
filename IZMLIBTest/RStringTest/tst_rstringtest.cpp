@@ -22,6 +22,8 @@ private Q_SLOTS:
     void test_convert_to_real();
 
     void test_first_last();
+
+    void test_dividedLeftPart_dividedRightPart();
 };
 
 RStringTest::RStringTest()
@@ -88,6 +90,36 @@ void RStringTest::test_first_last()
     RString obj("RString");
     QCOMPARE( obj.first(), 'R' );
     QCOMPARE( obj.last(), 'g' );
+}
+//==============================================================================
+/*!
+*/
+void RStringTest::test_dividedLeftPart_dividedRightPart()
+{
+    RString obj;
+
+    obj = RString("aaa bbb");
+    QCOMPARE( obj.dividedLeftPart().to_s(), std::string("aaa") );
+    QCOMPARE( obj.dividedRightPart().to_s(), std::string("bbb") );
+
+    QCOMPARE( obj.dividedLeftPart(" ").to_s(), std::string("aaa") );
+    QCOMPARE( obj.dividedRightPart(" ").to_s(), std::string("bbb") );
+
+    obj = RString("aaabbbccc");
+    QCOMPARE( obj.dividedLeftPart("bbb").to_s(), std::string("aaa") );
+    QCOMPARE( obj.dividedRightPart("bbb").to_s(), std::string("ccc") );
+
+    obj = RString(",aaa");
+    QCOMPARE( obj.dividedLeftPart(",").to_s(), std::string("") );
+    QCOMPARE( obj.dividedRightPart(",").to_s(), std::string("aaa") );
+
+    obj = RString("aaa,");
+    QCOMPARE( obj.dividedLeftPart(",").to_s(), std::string("aaa") );
+    QCOMPARE( obj.dividedRightPart(",").to_s(), std::string("") );
+
+    obj = RString("aaabbb");
+    QCOMPARE( obj.dividedLeftPart(",").to_s(), std::string("aaabbb") );
+    QCOMPARE( obj.dividedRightPart(",").to_s(), std::string("aaabbb") );
 }
 
 QTEST_APPLESS_MAIN(RStringTest);
