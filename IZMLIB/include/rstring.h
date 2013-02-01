@@ -44,14 +44,23 @@ public:
     char first() const;
     char last() const;
 
+    // first, lastの別名メソッド
+    char head() const;
+    char tail() const;
+
     // 判定
     bool include( const std::string& str ) const;
 
     // 分割
     std::vector<RString> split( const std::string& delimiter = " " ) const;
 
-    RString dividedLeftPart( const std::string& delimiter = " " ) const;
-    RString dividedRightPart( const std::string& delimiter = " " ) const;
+    // 左部分
+    RString  leftPart( const std::string& delimiter = " " ) const;
+    RString& leftPart_d( const std::string& delimiter = " " );
+
+    // 右部分
+    RString  rightPart( const std::string& delimiter = " " ) const;
+    RString& rightPart_d( const std::string& delimiter = " " );
 
     // 改行コードの削除
     RString  chomp() const;

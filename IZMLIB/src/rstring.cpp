@@ -87,8 +87,7 @@ int RString::to_i() const
 }
 
 /*!
-  @brief  int型への変換
-  @note   to_i()の別名
+  @brief  to_i()の別名メソッド
 */
 int RString::toInt() const
 {
@@ -104,8 +103,7 @@ double RString::to_f() const
 }
 
 /*!
-  @brief  double型への変換
-  @note   to_f()の別名
+  @brief  to_f()の別名メソッド
 */
 double RString::toDouble() const
 {
@@ -121,8 +119,7 @@ std::string RString::to_s() const
 }
 
 /*!
-  @brief  std::string型への変換
-  @note   to_s()の別名
+  @brief  to_s()の別名メソッド
 */
 std::string RString::toStdString() const
 {
@@ -153,6 +150,22 @@ char RString::last() const
         result = this->at( this->size() - 1 );
     }
     return result;
+}
+
+/*!
+  @brief  first()の別名メソッド
+*/
+char RString::head() const
+{
+    return this->first();
+}
+
+/*!
+  @brief  last()の別名メソッド
+*/
+char RString::tail() const
+{
+    return this->last();
 }
 
 /*!
@@ -211,9 +224,9 @@ std::vector<RString> RString::split( const std::string& delimiter ) const
 /*!
   @brief  デリミタで分割した文字列の左部分を返す
   @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
-  @return 分割された文字列の左部分
+  @return デリミタで分割した文字列の左部分
 */
-RString RString::dividedLeftPart( const std::string& delimiter ) const
+RString RString::leftPart( const std::string& delimiter ) const
 {
     RString result(*this);
     std::string::size_type foundIdx = 0;
@@ -225,11 +238,20 @@ RString RString::dividedLeftPart( const std::string& delimiter ) const
 }
 
 /*!
+  @brief  leftPart()の破壊メソッド版
+*/
+RString& RString::leftPart_d( const std::string& delimiter )
+{
+    *this = this->leftPart( delimiter );
+    return *this;
+}
+
+/*!
   @brief  デリミタで分割した文字列の右部分を返す
   @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
-  @return 分割された文字列の右部分
+  @return デリミタで分割した文字列の右部分
 */
-RString RString::dividedRightPart( const std::string& delimiter ) const
+RString RString::rightPart( const std::string& delimiter ) const
 {
     RString result(*this);
     std::string::size_type foundIdx = 0;
@@ -246,6 +268,15 @@ RString RString::dividedRightPart( const std::string& delimiter ) const
         }
     }
     return result;
+}
+
+/*!
+  @brief  rightPart()の破壊メソッド版
+*/
+RString& RString::rightPart_d( const std::string& delimiter )
+{
+    *this = this->rightPart( delimiter );
+    return *this;
 }
 
 /*!
@@ -269,7 +300,7 @@ RString RString::chomp() const
 }
 
 /*!
-  @note   chomp()の破壊メソッド版
+  @brief  chomp()の破壊メソッド版
 */
 RString& RString::chomp_d()
 {
@@ -292,7 +323,7 @@ RString RString::chop() const
 }
 
 /*!
-  @note   chop()の破壊メソッド版
+  @brief  chop()の破壊メソッド版
 */
 RString& RString::chop_d()
 {
@@ -314,7 +345,7 @@ RString RString::strip() const
 }
 
 /*!
-  @note   strip()の破壊メソッド版
+  @brief  strip()の破壊メソッド版
 */
 RString& RString::strip_d()
 {
@@ -339,7 +370,7 @@ RString RString::lstrip() const
 }
 
 /*!
-  @note   lstrip()の破壊メソッド版
+  @brief  lstrip()の破壊メソッド版
 */
 RString& RString::lstrip_d()
 {
@@ -364,7 +395,7 @@ RString RString::rstrip() const
 }
 
 /*!
-  @note   rstrip()の破壊メソッド版
+  @brief  rstrip()の破壊メソッド版
 */
 RString& RString::rstrip_d()
 {
@@ -373,7 +404,7 @@ RString& RString::rstrip_d()
 }
 
 /*!
-  @note  strip()の別名メソッド
+  @brief  strip()の別名メソッド
 */
 RString RString::trim() const
 {
@@ -381,7 +412,7 @@ RString RString::trim() const
 }
 
 /*!
-  @note   strip_d()の別名メソッド
+  @brief  strip_d()の別名メソッド
 */
 RString& RString::trim_d()
 {
@@ -389,7 +420,7 @@ RString& RString::trim_d()
 }
 
 /*!
-  @note   lstrip()の別名メソッド
+  @brief  lstrip()の別名メソッド
 */
 RString RString::ltrim() const
 {
@@ -397,7 +428,7 @@ RString RString::ltrim() const
 }
 
 /*!
-  @note   lstrip_d()の別名メソッド
+  @brief  lstrip_d()の別名メソッド
 */
 RString& RString::ltrim_d()
 {
@@ -405,7 +436,7 @@ RString& RString::ltrim_d()
 }
 
 /*!
-  @note   rstrip()の別名メソッド
+  @brief  rstrip()の別名メソッド
 */
 RString RString::rtrim() const
 {
@@ -413,7 +444,7 @@ RString RString::rtrim() const
 }
 
 /*!
-  @note   rstrip_d()の別名メソッド
+  @brief  rstrip_d()の別名メソッド
 */
 RString& RString::rtrim_d()
 {
@@ -440,7 +471,7 @@ RString RString::remove( const std::string& str ) const
 }
 
 /*!
-  @note   remove()の破壊メソッド版
+  @brief  remove()の破壊メソッド版
 */
 RString& RString::remove_d( const std::string& str )
 {
@@ -469,7 +500,7 @@ RString RString::sub( const std::string& before, const std::string& after ) cons
 }
 
 /*!
-  @note   sub()の破壊メソッド版
+  @brief  sub()の破壊メソッド版
 */
 RString& RString::sub_d( const std::string& before, const std::string& after )
 {
@@ -509,7 +540,7 @@ RString RString::gsub( const std::string& before, const std::string& after ) con
 }
 
 /*!
-  @note   gsub()の破壊メソッド版
+  @brief  gsub()の破壊メソッド版
 */
 RString& RString::gsub_d( const std::string& before, const std::string& after )
 {
@@ -530,7 +561,7 @@ RString RString::upcase() const
 }
 
 /*!
-  @note   upcase()の破壊メソッド版
+  @brief  upcase()の破壊メソッド版
 */
 RString& RString::upcase_d()
 {
@@ -551,7 +582,7 @@ RString RString::downcase() const
 }
 
 /*!
-  @note   downcase()の破壊メソッド版
+  @brief  downcase()の破壊メソッド版
 */
 RString& RString::downcase_d()
 {
