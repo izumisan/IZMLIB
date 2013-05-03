@@ -7,12 +7,18 @@
     <ClCompile Include="src\rstring.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\simpledllloaderwin.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\util.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\rstring.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\simpledllloaderwin.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
