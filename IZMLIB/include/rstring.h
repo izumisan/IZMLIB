@@ -1,6 +1,6 @@
 /*!
   @file  rstring.h
-  @brief RStringƒNƒ‰ƒX‚Ìƒwƒbƒ_ƒtƒ@ƒCƒ‹
+  @brief RStringã‚¯ãƒ©ã‚¹ã®ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«
 */
 #ifndef IZM_RSTRING_H
 #define IZM_RSTRING_H
@@ -13,7 +13,7 @@ namespace izm
 
 class RString : public std::string
 {
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒfƒXƒgƒ‰ƒNƒ^
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 public:
     RString();
     explicit RString( const double num );
@@ -21,18 +21,18 @@ public:
 
     virtual ~RString();
 
-// ‰‰Zq
+// æ¼”ç®—å­
 public:
-    // ‘ã“ü‰‰Zq
+    // ä»£å…¥æ¼”ç®—å­
     RString& operator =( const std::string& rhs );
     RString& operator =( const RString& rhs );
 
-    // ‰ÁZ‰‰Zq
+    // åŠ ç®—æ¼”ç®—å­
     RString operator +( const double rhs );
 
-// ‘€ì
+// æ“ä½œ
 public:
-    // Œ^•ÏŠ·
+    // å‹å¤‰æ›
     int to_i() const;
     int toInt() const;
     double to_f() const;
@@ -40,73 +40,73 @@ public:
     std::string to_s() const;
     std::string toStdString() const;
 
-    // ƒAƒNƒZƒX
+    // ã‚¢ã‚¯ã‚»ã‚¹
     char first() const;
     char last() const;
 
-    // first, last‚Ì•Ê–¼ƒƒ\ƒbƒh
+    // first, lastã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
     char head() const;
     char tail() const;
 
-    // ”»’è
+    // åˆ¤å®š
     bool include( const std::string& str ) const;
 
-    // •ªŠ„
+    // åˆ†å‰²
     std::vector<RString> split( const std::string& delimiter = " " ) const;
 
-    // ¶•”•ª
+    // å·¦éƒ¨åˆ†
     RString  leftPart( const std::string& delimiter = " " ) const;
     RString& leftPart_d( const std::string& delimiter = " " );
 
-    // ‰E•”•ª
+    // å³éƒ¨åˆ†
     RString  rightPart( const std::string& delimiter = " " ) const;
     RString& rightPart_d( const std::string& delimiter = " " );
 
-    // ‰üsƒR[ƒh‚Ìíœ
+    // æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã®å‰Šé™¤
     RString  chomp() const;
-    RString& chomp_d();     // ”j‰óƒƒ\ƒbƒh
+    RString& chomp_d();     // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
-    // ––”ö•¶š‚Ìíœ
+    // æœ«å°¾æ–‡å­—ã®å‰Šé™¤
     RString  chop() const;
-    RString& chop_d();      // ”j‰óƒƒ\ƒbƒh
+    RString& chop_d();      // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
-    // ‹ó”’—Ş•¶š‚Ìíœ
+    // ç©ºç™½é¡æ–‡å­—ã®å‰Šé™¤
     RString  strip() const;
-    RString& strip_d();     // ”j‰óƒƒ\ƒbƒh
+    RString& strip_d();     // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
     RString  lstrip() const;
-    RString& lstrip_d();    // ”j‰óƒƒ\ƒbƒh
+    RString& lstrip_d();    // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
     RString  rstrip() const;
-    RString& rstrip_d();    // ”j‰óƒƒ\ƒbƒh
+    RString& rstrip_d();    // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
-    // strip, lstrip, rstrip‚Ì•Ê–¼ƒƒ\ƒbƒh
+    // strip, lstrip, rstripã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
     RString  trim() const;
-    RString& trim_d();      // ”j‰óƒƒ\ƒbƒh
+    RString& trim_d();      // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
     RString  ltrim() const;
-    RString& ltrim_d();     // ”j‰óƒƒ\ƒbƒh
+    RString& ltrim_d();     // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
     RString  rtrim() const;
-    RString& rtrim_d();     // ”j‰óƒƒ\ƒbƒh
+    RString& rtrim_d();     // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
-    // •¶š—ñ‚Ìíœ
+    // æ–‡å­—åˆ—ã®å‰Šé™¤
     RString  remove( const std::string& str ) const;
-    RString& remove_d( const std::string& str );     // ”j‰óƒƒ\ƒbƒh
+    RString& remove_d( const std::string& str );     // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
-    // •¶š—ñ‚Ì’uŠ·
+    // æ–‡å­—åˆ—ã®ç½®æ›
     RString  sub( const std::string& before, const std::string& after ) const;
-    RString& sub_d( const std::string& before, const std::string& after );      // ”j‰óƒƒ\ƒbƒh
+    RString& sub_d( const std::string& before, const std::string& after );      // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
     RString  gsub( const std::string& before, const std::string& after ) const;
-    RString& gsub_d( const std::string& before, const std::string& after );     // ”j‰óƒƒ\ƒbƒh
+    RString& gsub_d( const std::string& before, const std::string& after );     // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
-    // ‘å•¶š <=> ¬•¶š
+    // å¤§æ–‡å­— <=> å°æ–‡å­—
     RString  upcase() const;
-    RString& upcase_d();        // ”j‰óƒƒ\ƒbƒh
+    RString& upcase_d();        // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 
     RString  downcase() const;
-    RString& downcase_d();      // ”j‰óƒƒ\ƒbƒh
+    RString& downcase_d();      // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰
 };
 
 } // namcespace izm

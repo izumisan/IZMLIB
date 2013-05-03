@@ -1,4 +1,4 @@
-# ƒeƒXƒgƒ^[ƒQƒbƒg‚ÌƒfƒBƒŒƒNƒgƒŠTOP
+# ãƒ†ã‚¹ãƒˆã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªTOP
 TEST_TARGET_TOP = $${PWD}/../IZMLIB/
 
 INCLUDEPATH += $${TEST_TARGET_TOP}/include/

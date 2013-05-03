@@ -1,6 +1,6 @@
 /*!
   @file  util.h
-  @brief utilモジュールのヘッダファイル
+  @brief util繝｢繧ｸ繝･繝ｼ繝ｫ縺ｮ繝倥ャ繝繝輔ぃ繧､繝ｫ
 */
 #ifndef IZM_UTIL_H
 #define IZM_UTIL_H

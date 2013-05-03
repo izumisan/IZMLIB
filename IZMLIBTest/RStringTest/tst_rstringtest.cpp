@@ -178,7 +178,7 @@ void RStringTest::test_leftPart_rightPart()
     QCOMPARE( obj.rightPart(",").to_s(), std::string("aaabbb") );
 
     //
-    // ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚µ‚Ä‚¢‚È‚¢‚±‚Æ‚ÌŠm”F
+    // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã—ã¦ã„ãªã„ã“ã¨ã®ç¢ºèª
     //
     obj = RString("aaa bbb");
     obj.leftPart();
@@ -189,7 +189,7 @@ void RStringTest::test_leftPart_rightPart()
     QCOMPARE( obj.to_s(), std::string("aaa bbb") );
 
     //
-    // ”j‰óƒƒ\ƒbƒh‚ÌŠm”F
+    // ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ã®ç¢ºèª
     //
     obj = RString("aaa bbb");
     obj.leftPart_d();

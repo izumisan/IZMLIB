@@ -1,6 +1,6 @@
 /*!
   @file  util.cpp
-  @brief utilƒ‚ƒWƒ…[ƒ‹‚ÌÀ‘•ƒtƒ@ƒCƒ‹
+  @brief utilãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å®Ÿè£…ãƒ•ã‚¡ã‚¤ãƒ«
 */
 #include <string>
 #include <vector>
@@ -11,12 +11,12 @@ namespace izm
 {
 
 /*!
-  @brief  •¶š—ñ‚ğƒfƒŠƒ~ƒ^‚Å•ªŠ„‚·‚éB
-  @param  [in]  str        •ªŠ„‚·‚é•¶š—ñ
-  @param  [in]  delimiter  ƒfƒŠƒ~ƒ^ (ƒfƒtƒHƒ‹ƒgˆø”=" ")
-  @return •ªŠ„‚³‚ê‚½•¶š—ñ‚ÌƒxƒNƒ^
-  @note   ˜A‘±‚·‚éƒfƒŠƒ~ƒ^‚Íˆê‚Â‚Æ‚İ‚È‚·\n
-          (—á) "abacdaaefga"‚ğ"a"‚Å•ªŠ„‚µ‚½ê‡‚Ì–ß‚è’l->{"b", "cd", "efg"}
+  @brief  æ–‡å­—åˆ—ã‚’ãƒ‡ãƒªãƒŸã‚¿ã§åˆ†å‰²ã™ã‚‹ã€‚
+  @param  [in]  str        åˆ†å‰²ã™ã‚‹æ–‡å­—åˆ—
+  @param  [in]  delimiter  ãƒ‡ãƒªãƒŸã‚¿ (ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå¼•æ•°=" ")
+  @return åˆ†å‰²ã•ã‚ŒãŸæ–‡å­—åˆ—ã®ãƒ™ã‚¯ã‚¿
+  @note   é€£ç¶šã™ã‚‹ãƒ‡ãƒªãƒŸã‚¿ã¯ä¸€ã¤ã¨ã¿ãªã™\n
+          (ä¾‹) "abacdaaefga"ã‚’"a"ã§åˆ†å‰²ã—ãŸå ´åˆã®æˆ»ã‚Šå€¤->{"b", "cd", "efg"}
 */
 std::vector<std::string> split( const std::string& str, const std::string& delimiter )
 {
@@ -31,13 +31,13 @@ std::vector<std::string> split( const std::string& str, const std::string& delim
             result.push_back( str.substr( currentIdx, foundIdx - currentIdx ) );
             currentIdx = foundIdx + delimiter.size();
         }
-        // ƒfƒŠƒ~ƒ^‚ª˜A‘±‚µ‚Ä‚¢‚éê‡
+        // ãƒ‡ãƒªãƒŸã‚¿ãŒé€£ç¶šã—ã¦ã„ã‚‹å ´åˆ
         else
         {
             currentIdx += delimiter.size();
         }
     }
-    // c‚è‚Ì‰ñû
+    // æ®‹ã‚Šã®å›å
     if ( currentIdx < str.size() )
     {
         result.push_back( str.substr( currentIdx, std::string::npos ) );
@@ -46,10 +46,10 @@ std::vector<std::string> split( const std::string& str, const std::string& delim
 }
 
 /*!
-  @brief  ‘OŒã‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚­
-  @param  [in]  str  •¶š—ñ
-  @return ‘OŒã‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚¢‚½•¶š—ñ
-  @note   ‹ó”’—Ş•¶š: ‹ó”’A‘®‘—‚èA‰üsA•œ‹AA…•½ƒ^ƒuA‚’¼ƒ^ƒu
+  @brief  å‰å¾Œã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã
+  @param  [in]  str  æ–‡å­—åˆ—
+  @return å‰å¾Œã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—
+  @note   ç©ºç™½é¡æ–‡å­—: ç©ºç™½ã€æ›¸å¼é€ã‚Šã€æ”¹è¡Œã€å¾©å¸°ã€æ°´å¹³ã‚¿ãƒ–ã€å‚ç›´ã‚¿ãƒ–
 */
 std::string trim( const std::string& str )
 {
@@ -60,41 +60,41 @@ std::string trim( const std::string& str )
 }
 
 /*!
-  @brief  æ“ª‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚­
-  @param  [in]  str  •¶š—ñ
-  @return æ“ª‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚¢‚½•¶š—ñ
-  @note   ‹ó”’—Ş•¶š: ‹ó”’A‘®‘—‚èA‰üsA•œ‹AA…•½ƒ^ƒuA‚’¼ƒ^ƒu
+  @brief  å…ˆé ­ã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã
+  @param  [in]  str  æ–‡å­—åˆ—
+  @return å…ˆé ­ã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—
+  @note   ç©ºç™½é¡æ–‡å­—: ç©ºç™½ã€æ›¸å¼é€ã‚Šã€æ”¹è¡Œã€å¾©å¸°ã€æ°´å¹³ã‚¿ãƒ–ã€å‚ç›´ã‚¿ãƒ–
 */
 std::string ltrim( const std::string& str )
 {
-    // ‹ó”’—Ş•¶š‚Å‚Í‚È‚¢Å‰‚ÌˆÊ’u‚ğŒŸõ‚µA
-    // Œ©‚Â‚©‚Á‚½ˆÊ’u‚©‚ç•¶š—ñÅŒã‚Ü‚Å‚ğØ‚èo‚µ‚Ä•Ô‚·B
+    // ç©ºç™½é¡æ–‡å­—ã§ã¯ãªã„æœ€åˆã®ä½ç½®ã‚’æ¤œç´¢ã—ã€
+    // è¦‹ã¤ã‹ã£ãŸä½ç½®ã‹ã‚‰æ–‡å­—åˆ—æœ€å¾Œã¾ã§ã‚’åˆ‡ã‚Šå‡ºã—ã¦è¿”ã™ã€‚
 
     std::string result("");
     std::string::size_type foundIdx = str.find_first_not_of(" \f\n\r\t\v");
     if ( foundIdx != std::string::npos )
     {
-        result = str.substr( foundIdx, std::string::npos );  // Œ©‚Â‚¯‚½ˆÊ’u‚©‚çÅŒã‚Ü‚Å
+        result = str.substr( foundIdx, std::string::npos );  // è¦‹ã¤ã‘ãŸä½ç½®ã‹ã‚‰æœ€å¾Œã¾ã§
     }
     return result;
 }
 
 /*!
-  @brief  ––”ö‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚­
-  @param  [in]  str  •¶š—ñ
-  @return ––”ö‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚¢‚½•¶š—ñ
-  @note   ‹ó”’—Ş•¶š: ‹ó”’A‘®‘—‚èA‰üsA•œ‹AA…•½ƒ^ƒuA‚’¼ƒ^ƒu
+  @brief  æœ«å°¾ã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã
+  @param  [in]  str  æ–‡å­—åˆ—
+  @return æœ«å°¾ã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—
+  @note   ç©ºç™½é¡æ–‡å­—: ç©ºç™½ã€æ›¸å¼é€ã‚Šã€æ”¹è¡Œã€å¾©å¸°ã€æ°´å¹³ã‚¿ãƒ–ã€å‚ç›´ã‚¿ãƒ–
 */
 std::string rtrim( const std::string& str )
 {
-    // ‹ó”’—Ş•¶š‚Å‚Í‚È‚¢ÅŒã‚ÌˆÊ’u‚ğŒŸõ‚µA
-    // ˆê•¶š–Ú‚©‚çŒ©‚Â‚©‚Á‚½ˆÊ’u‚Ü‚Å‚Ì•¶š—ñ‚ğØ‚èo‚·B
+    // ç©ºç™½é¡æ–‡å­—ã§ã¯ãªã„æœ€å¾Œã®ä½ç½®ã‚’æ¤œç´¢ã—ã€
+    // ä¸€æ–‡å­—ç›®ã‹ã‚‰è¦‹ã¤ã‹ã£ãŸä½ç½®ã¾ã§ã®æ–‡å­—åˆ—ã‚’åˆ‡ã‚Šå‡ºã™ã€‚
 
     std::string result("");
     std::string::size_type foundIdx = str.find_last_not_of(" \f\n\r\t\v");
     if ( foundIdx != std::string::npos )
     {
-        result = str.substr( 0, foundIdx + 1 );  // Œ©‚Â‚©‚Á‚½ˆÊ’u‚Ü‚Å‚Ì•¶š—ñ‚ğØ‚è‚¾‚·
+        result = str.substr( 0, foundIdx + 1 );  // è¦‹ã¤ã‹ã£ãŸä½ç½®ã¾ã§ã®æ–‡å­—åˆ—ã‚’åˆ‡ã‚Šã ã™
     }
     return result;
 }

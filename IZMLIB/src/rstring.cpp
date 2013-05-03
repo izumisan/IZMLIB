@@ -1,6 +1,6 @@
 /*!
   @file  rstring.cpp
-  @brief RStringƒNƒ‰ƒX‚ÌÀ‘•ƒtƒ@ƒCƒ‹
+  @brief RStringã‚¯ãƒ©ã‚¹ã®å®Ÿè£…ãƒ•ã‚¡ã‚¤ãƒ«
 */
 #include <cstdlib>
 #include <cctype>
@@ -15,14 +15,14 @@ namespace izm
 {
 
 /*!
-  @brief  ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  @brief  ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 */
 RString::RString()
     : std::string()
 {}
 
 /*!
-  @brief  ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  @brief  ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 */
 RString::RString( const double num )
     : std::string()
@@ -33,20 +33,20 @@ RString::RString( const double num )
 }
 
 /*!
-  @brief  ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  @brief  ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 */
 RString::RString( const std::string& str )
     : std::string( str )
 {}
 
 /*!
-  @brief  ƒfƒXƒgƒ‰ƒNƒ^
+  @brief  ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 */
 RString::~RString()
 {}
 
 /*!
-  @brief  ‘ã“ü‰‰Zq
+  @brief  ä»£å…¥æ¼”ç®—å­
 */
 RString& RString::operator =( const std::string& rhs )
 {
@@ -55,7 +55,7 @@ RString& RString::operator =( const std::string& rhs )
 }
 
 /*!
-  @brief  ‘ã“ü‰‰Zq
+  @brief  ä»£å…¥æ¼”ç®—å­
 */
 RString& RString::operator =( const RString& rhs )
 {
@@ -67,7 +67,7 @@ RString& RString::operator =( const RString& rhs )
 }
 
 /*!
-  @brief  ‰ÁZ‰‰Zq
+  @brief  åŠ ç®—æ¼”ç®—å­
 */
 RString RString::operator +( const double rhs )
 {
@@ -79,7 +79,7 @@ RString RString::operator +( const double rhs )
 }
 
 /*!
-  @brief  intŒ^‚Ö‚Ì•ÏŠ·
+  @brief  intå‹ã¸ã®å¤‰æ›
 */
 int RString::to_i() const
 {
@@ -87,7 +87,7 @@ int RString::to_i() const
 }
 
 /*!
-  @brief  to_i()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  to_i()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 int RString::toInt() const
 {
@@ -95,7 +95,7 @@ int RString::toInt() const
 }
 
 /*!
-  @brief  doubleŒ^‚Ö‚Ì•ÏŠ·
+  @brief  doubleå‹ã¸ã®å¤‰æ›
 */
 double RString::to_f() const
 {
@@ -103,7 +103,7 @@ double RString::to_f() const
 }
 
 /*!
-  @brief  to_f()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  to_f()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 double RString::toDouble() const
 {
@@ -111,15 +111,15 @@ double RString::toDouble() const
 }
 
 /*!
-  @brief  std::stringŒ^‚Ö‚Ì•ÏŠ·
+  @brief  std::stringå‹ã¸ã®å¤‰æ›
 */
 std::string RString::to_s() const
 {
-    return static_cast<std::string>(*this);  // ƒAƒbƒvƒLƒƒƒXƒg
+    return static_cast<std::string>(*this);  // ã‚¢ãƒƒãƒ—ã‚­ãƒ£ã‚¹ãƒˆ
 }
 
 /*!
-  @brief  to_s()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  to_s()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 std::string RString::toStdString() const
 {
@@ -127,7 +127,7 @@ std::string RString::toStdString() const
 }
 
 /*!
-  @brief  æ“ª•¶š‚ğ•Ô‚·
+  @brief  å…ˆé ­æ–‡å­—ã‚’è¿”ã™
 */
 char RString::first() const
 {
@@ -140,7 +140,7 @@ char RString::first() const
 }
 
 /*!
-  @brief  ––”ö•¶š‚ğ•Ô‚·
+  @brief  æœ«å°¾æ–‡å­—ã‚’è¿”ã™
 */
 char RString::last() const
 {
@@ -153,7 +153,7 @@ char RString::last() const
 }
 
 /*!
-  @brief  first()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  first()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 char RString::head() const
 {
@@ -161,7 +161,7 @@ char RString::head() const
 }
 
 /*!
-  @brief  last()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  last()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 char RString::tail() const
 {
@@ -169,7 +169,7 @@ char RString::tail() const
 }
 
 /*!
-  @brief  •¶š—ñ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©”Û‚©‚ğ”»’è‚·‚é
+  @brief  æ–‡å­—åˆ—ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹å¦ã‹ã‚’åˆ¤å®šã™ã‚‹
 */
 bool RString::include( const std::string& str ) const
 {
@@ -187,11 +187,11 @@ bool RString::include( const std::string& str ) const
 }
 
 /*!
-  @brief  ƒfƒŠƒ~ƒ^‚Å•ªŠ„‚µ‚½•¶š—ñ‚ğ•Ô‚·
-  @param  [in]  delimiter  ƒfƒŠƒ~ƒ^ (ƒfƒtƒHƒ‹ƒgˆø”=" ")
-  @return •ªŠ„‚³‚ê‚½•¶š—ñ‚ÌƒxƒNƒ^
-  @note   ˜A‘±‚·‚éƒfƒŠƒ~ƒ^‚Íˆê‚Â‚Æ‚İ‚È‚·\n
-          (—á) "abacdaaefga"‚ğ"a"‚Å•ªŠ„‚µ‚½ê‡‚Ì–ß‚è’l->{"b", "cd", "efg"}
+  @brief  ãƒ‡ãƒªãƒŸã‚¿ã§åˆ†å‰²ã—ãŸæ–‡å­—åˆ—ã‚’è¿”ã™
+  @param  [in]  delimiter  ãƒ‡ãƒªãƒŸã‚¿ (ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå¼•æ•°=" ")
+  @return åˆ†å‰²ã•ã‚ŒãŸæ–‡å­—åˆ—ã®ãƒ™ã‚¯ã‚¿
+  @note   é€£ç¶šã™ã‚‹ãƒ‡ãƒªãƒŸã‚¿ã¯ä¸€ã¤ã¨ã¿ãªã™\n
+          (ä¾‹) "abacdaaefga"ã‚’"a"ã§åˆ†å‰²ã—ãŸå ´åˆã®æˆ»ã‚Šå€¤->{"b", "cd", "efg"}
 */
 std::vector<RString> RString::split( const std::string& delimiter ) const
 {
@@ -206,13 +206,13 @@ std::vector<RString> RString::split( const std::string& delimiter ) const
             result.push_back( substr( currentIdx, foundIdx - currentIdx ) );
             currentIdx = foundIdx + delimiter.size();
         }
-        // ƒfƒŠƒ~ƒ^‚ª˜A‘±‚µ‚Ä‚¢‚éê‡
+        // ãƒ‡ãƒªãƒŸã‚¿ãŒé€£ç¶šã—ã¦ã„ã‚‹å ´åˆ
         else
         {
             currentIdx += delimiter.size();
         }
     }
-    // c‚è‚Ì‰ñû
+    // æ®‹ã‚Šã®å›å
     if ( currentIdx <= this->size() - 1 )
     {
         result.push_back( substr( currentIdx, std::string::npos ) );
@@ -222,9 +222,9 @@ std::vector<RString> RString::split( const std::string& delimiter ) const
 }
 
 /*!
-  @brief  ƒfƒŠƒ~ƒ^‚Å•ªŠ„‚µ‚½•¶š—ñ‚Ì¶•”•ª‚ğ•Ô‚·
-  @param  [in]  delimiter  ƒfƒŠƒ~ƒ^ (ƒfƒtƒHƒ‹ƒgˆø”=" ")
-  @return ƒfƒŠƒ~ƒ^‚Å•ªŠ„‚µ‚½•¶š—ñ‚Ì¶•”•ª
+  @brief  ãƒ‡ãƒªãƒŸã‚¿ã§åˆ†å‰²ã—ãŸæ–‡å­—åˆ—ã®å·¦éƒ¨åˆ†ã‚’è¿”ã™
+  @param  [in]  delimiter  ãƒ‡ãƒªãƒŸã‚¿ (ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå¼•æ•°=" ")
+  @return ãƒ‡ãƒªãƒŸã‚¿ã§åˆ†å‰²ã—ãŸæ–‡å­—åˆ—ã®å·¦éƒ¨åˆ†
 */
 RString RString::leftPart( const std::string& delimiter ) const
 {
@@ -238,7 +238,7 @@ RString RString::leftPart( const std::string& delimiter ) const
 }
 
 /*!
-  @brief  leftPart()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  leftPart()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::leftPart_d( const std::string& delimiter )
 {
@@ -247,9 +247,9 @@ RString& RString::leftPart_d( const std::string& delimiter )
 }
 
 /*!
-  @brief  ƒfƒŠƒ~ƒ^‚Å•ªŠ„‚µ‚½•¶š—ñ‚Ì‰E•”•ª‚ğ•Ô‚·
-  @param  [in]  delimiter  ƒfƒŠƒ~ƒ^ (ƒfƒtƒHƒ‹ƒgˆø”=" ")
-  @return ƒfƒŠƒ~ƒ^‚Å•ªŠ„‚µ‚½•¶š—ñ‚Ì‰E•”•ª
+  @brief  ãƒ‡ãƒªãƒŸã‚¿ã§åˆ†å‰²ã—ãŸæ–‡å­—åˆ—ã®å³éƒ¨åˆ†ã‚’è¿”ã™
+  @param  [in]  delimiter  ãƒ‡ãƒªãƒŸã‚¿ (ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå¼•æ•°=" ")
+  @return ãƒ‡ãƒªãƒŸã‚¿ã§åˆ†å‰²ã—ãŸæ–‡å­—åˆ—ã®å³éƒ¨åˆ†
 */
 RString RString::rightPart( const std::string& delimiter ) const
 {
@@ -271,7 +271,7 @@ RString RString::rightPart( const std::string& delimiter ) const
 }
 
 /*!
-  @brief  rightPart()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  rightPart()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::rightPart_d( const std::string& delimiter )
 {
@@ -280,18 +280,18 @@ RString& RString::rightPart_d( const std::string& delimiter )
 }
 
 /*!
-  @brief  ––”ö‚Ì‰üsƒR[ƒh‚ğæ‚èœ‚­
-  @return ‰üsƒR[ƒh‚ğæ‚èœ‚¢‚½•¶š—ñ
+  @brief  æœ«å°¾ã®æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å–ã‚Šé™¤ã
+  @return æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—
 */
 RString RString::chomp() const
 {
     RString result(*this);
-    // ––”ö•¶š‚ªLF‚Ìê‡‚Ííœ‚·‚é
+    // æœ«å°¾æ–‡å­—ãŒLFã®å ´åˆã¯å‰Šé™¤ã™ã‚‹
     if( result.last() == '\n' )
     {
         result = result.erase( result.size() - 1 );
     }
-    // ––”ö•¶š‚ªCR‚Ìê‡‚Ííœ‚·‚é
+    // æœ«å°¾æ–‡å­—ãŒCRã®å ´åˆã¯å‰Šé™¤ã™ã‚‹
     if( result.last() == '\r' )
     {
         result = result.erase( result.size() - 1 );
@@ -300,7 +300,7 @@ RString RString::chomp() const
 }
 
 /*!
-  @brief  chomp()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  chomp()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::chomp_d()
 {
@@ -309,8 +309,8 @@ RString& RString::chomp_d()
 }
 
 /*!
-  @brief  ––”ö‚Ìˆê•¶š‚ğæ‚èœ‚­
-  @return ––”ö‚Ìˆê•¶š‚ğæ‚èœ‚¢‚½•¶š—ñ
+  @brief  æœ«å°¾ã®ä¸€æ–‡å­—ã‚’å–ã‚Šé™¤ã
+  @return æœ«å°¾ã®ä¸€æ–‡å­—ã‚’å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—
 */
 RString RString::chop() const
 {
@@ -323,7 +323,7 @@ RString RString::chop() const
 }
 
 /*!
-  @brief  chop()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  chop()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::chop_d()
 {
@@ -332,9 +332,9 @@ RString& RString::chop_d()
 }
 
 /*!
-  @brief  ‘OŒã‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚­
-  @return ‘OŒã‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚¢‚½•¶š—ñ
-  @note   ‹ó”’—Ş•¶š: ‹ó”’A‘®‘—‚èA‰üsA•œ‹AA…•½ƒ^ƒuA‚’¼ƒ^ƒu
+  @brief  å‰å¾Œã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã
+  @return å‰å¾Œã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—
+  @note   ç©ºç™½é¡æ–‡å­—: ç©ºç™½ã€æ›¸å¼é€ã‚Šã€æ”¹è¡Œã€å¾©å¸°ã€æ°´å¹³ã‚¿ãƒ–ã€å‚ç›´ã‚¿ãƒ–
 */
 RString RString::strip() const
 {
@@ -345,7 +345,7 @@ RString RString::strip() const
 }
 
 /*!
-  @brief  strip()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  strip()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::strip_d()
 {
@@ -354,9 +354,9 @@ RString& RString::strip_d()
 }
 
 /*!
-  @brief  æ“ª‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚­
-  @return æ“ª‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚¢‚½•¶š—ñ
-  @note   ‹ó”’—Ş•¶š: ‹ó”’A‘®‘—‚èA‰üsA•œ‹AA…•½ƒ^ƒuA‚’¼ƒ^ƒu
+  @brief  å…ˆé ­ã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã
+  @return å…ˆé ­ã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—
+  @note   ç©ºç™½é¡æ–‡å­—: ç©ºç™½ã€æ›¸å¼é€ã‚Šã€æ”¹è¡Œã€å¾©å¸°ã€æ°´å¹³ã‚¿ãƒ–ã€å‚ç›´ã‚¿ãƒ–
 */
 RString RString::lstrip() const
 {
@@ -370,7 +370,7 @@ RString RString::lstrip() const
 }
 
 /*!
-  @brief  lstrip()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  lstrip()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::lstrip_d()
 {
@@ -379,9 +379,9 @@ RString& RString::lstrip_d()
 }
 
 /*!
-  @brief  ––”ö‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚­
-  @return ––”ö‚Ì‹ó”’—Ş•¶š‚ğ‘S‚Äæ‚èœ‚¢‚½•¶š—ñ
-  @note   ‹ó”’—Ş•¶š: ‹ó”’A‘®‘—‚èA‰üsA•œ‹AA…•½ƒ^ƒuA‚’¼ƒ^ƒu
+  @brief  æœ«å°¾ã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã
+  @return æœ«å°¾ã®ç©ºç™½é¡æ–‡å­—ã‚’å…¨ã¦å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—
+  @note   ç©ºç™½é¡æ–‡å­—: ç©ºç™½ã€æ›¸å¼é€ã‚Šã€æ”¹è¡Œã€å¾©å¸°ã€æ°´å¹³ã‚¿ãƒ–ã€å‚ç›´ã‚¿ãƒ–
 */
 RString RString::rstrip() const
 {
@@ -395,7 +395,7 @@ RString RString::rstrip() const
 }
 
 /*!
-  @brief  rstrip()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  rstrip()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::rstrip_d()
 {
@@ -404,7 +404,7 @@ RString& RString::rstrip_d()
 }
 
 /*!
-  @brief  strip()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  strip()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 RString RString::trim() const
 {
@@ -412,7 +412,7 @@ RString RString::trim() const
 }
 
 /*!
-  @brief  strip_d()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  strip_d()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 RString& RString::trim_d()
 {
@@ -420,7 +420,7 @@ RString& RString::trim_d()
 }
 
 /*!
-  @brief  lstrip()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  lstrip()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 RString RString::ltrim() const
 {
@@ -428,7 +428,7 @@ RString RString::ltrim() const
 }
 
 /*!
-  @brief  lstrip_d()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  lstrip_d()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 RString& RString::ltrim_d()
 {
@@ -436,7 +436,7 @@ RString& RString::ltrim_d()
 }
 
 /*!
-  @brief  rstrip()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  rstrip()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 RString RString::rtrim() const
 {
@@ -444,7 +444,7 @@ RString RString::rtrim() const
 }
 
 /*!
-  @brief  rstrip_d()‚Ì•Ê–¼ƒƒ\ƒbƒh
+  @brief  rstrip_d()ã®åˆ¥åãƒ¡ã‚½ãƒƒãƒ‰
 */
 RString& RString::rtrim_d()
 {
@@ -452,9 +452,9 @@ RString& RString::rtrim_d()
 }
 
 /*!
-  @brief  •¶š—ñ‚ğíœ‚·‚é
-  @param  [in]  str  íœ‚·‚é•¶š—ñ
-  @return ˆø”‚Åw’è‚µ‚½•¶š—ñ‚ğíœ‚µ‚½•¶š—ñ
+  @brief  æ–‡å­—åˆ—ã‚’å‰Šé™¤ã™ã‚‹
+  @param  [in]  str  å‰Šé™¤ã™ã‚‹æ–‡å­—åˆ—
+  @return å¼•æ•°ã§æŒ‡å®šã—ãŸæ–‡å­—åˆ—ã‚’å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 */
 RString RString::remove( const std::string& str ) const
 {
@@ -471,7 +471,7 @@ RString RString::remove( const std::string& str ) const
 }
 
 /*!
-  @brief  remove()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  remove()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::remove_d( const std::string& str )
 {
@@ -480,10 +480,10 @@ RString& RString::remove_d( const std::string& str )
 }
 
 /*!
-  @brief  •¶š—ñ‚ğ’uŠ·‚·‚é
-  @param  [in]   before  •ÏŠ·‘O‚Ì•¶š—ñ
-  @param  [out]  after   •ÏŠ·Œã‚Ì•¶š—ñ
-  @return ’uŠ·Œã‚Ì•¶š—ñ
+  @brief  æ–‡å­—åˆ—ã‚’ç½®æ›ã™ã‚‹
+  @param  [in]   before  å¤‰æ›å‰ã®æ–‡å­—åˆ—
+  @param  [out]  after   å¤‰æ›å¾Œã®æ–‡å­—åˆ—
+  @return ç½®æ›å¾Œã®æ–‡å­—åˆ—
 */
 RString RString::sub( const std::string& before, const std::string& after ) const
 {
@@ -500,7 +500,7 @@ RString RString::sub( const std::string& before, const std::string& after ) cons
 }
 
 /*!
-  @brief  sub()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  sub()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::sub_d( const std::string& before, const std::string& after )
 {
@@ -509,10 +509,10 @@ RString& RString::sub_d( const std::string& before, const std::string& after )
 }
 
 /*!
-  @brief  •¶š—ñ‚ğÄ‹A“I‚É’uŠ·‚·‚é
-  @param  [in]   before  •ÏŠ·‘O‚Ì•¶š—ñ
-  @param  [out]  after   •ÏŠ·Œã‚Ì•¶š—ñ
-  @return ’uŠ·Œã‚Ì•¶š—ñ
+  @brief  æ–‡å­—åˆ—ã‚’å†å¸°çš„ã«ç½®æ›ã™ã‚‹
+  @param  [in]   before  å¤‰æ›å‰ã®æ–‡å­—åˆ—
+  @param  [out]  after   å¤‰æ›å¾Œã®æ–‡å­—åˆ—
+  @return ç½®æ›å¾Œã®æ–‡å­—åˆ—
 */
 RString RString::gsub( const std::string& before, const std::string& after ) const
 {
@@ -540,7 +540,7 @@ RString RString::gsub( const std::string& before, const std::string& after ) con
 }
 
 /*!
-  @brief  gsub()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  gsub()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::gsub_d( const std::string& before, const std::string& after )
 {
@@ -549,8 +549,8 @@ RString& RString::gsub_d( const std::string& before, const std::string& after )
 }
 
 /*!
-  @brief  ‘å•¶š‚É•ÏŠ·‚·‚é
-  @return ‘å•¶š‚É•ÏŠ·‚µ‚½•¶š—ñ
+  @brief  å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹
+  @return å¤§æ–‡å­—ã«å¤‰æ›ã—ãŸæ–‡å­—åˆ—
 */
 RString RString::upcase() const
 {
@@ -561,7 +561,7 @@ RString RString::upcase() const
 }
 
 /*!
-  @brief  upcase()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  upcase()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::upcase_d()
 {
@@ -570,8 +570,8 @@ RString& RString::upcase_d()
 }
 
 /*!
-  @brief  ¬•¶š‚É•ÏŠ·‚·‚é
-  @return ¬•¶š‚É•ÏŠ·‚µ‚½•¶š—ñ
+  @brief  å°æ–‡å­—ã«å¤‰æ›ã™ã‚‹
+  @return å°æ–‡å­—ã«å¤‰æ›ã—ãŸæ–‡å­—åˆ—
 */
 RString RString::downcase() const
 {
@@ -582,7 +582,7 @@ RString RString::downcase() const
 }
 
 /*!
-  @brief  downcase()‚Ì”j‰óƒƒ\ƒbƒh”Å
+  @brief  downcase()ã®ç ´å£Šãƒ¡ã‚½ãƒƒãƒ‰ç‰ˆ
 */
 RString& RString::downcase_d()
 {
