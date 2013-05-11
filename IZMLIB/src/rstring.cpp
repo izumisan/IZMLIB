@@ -222,15 +222,15 @@ std::vector<RString> RString::split( const std::string& delimiter ) const
 }
 
 /*!
-  @brief  デリミタで分割した文字列の左部分を返す
+  @brief  デリミタの左部分を返す(最短一致検索)
   @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
-  @return デリミタで分割した文字列の左部分
+  @return デリミタの左部分
 */
 RString RString::leftPart( const std::string& delimiter ) const
 {
-    RString result(*this);
-    std::string::size_type foundIdx = 0;
-    if ( ( foundIdx = this->find( delimiter ) ) != std::string::npos )
+    RString result;
+    std::string::size_type foundIdx = this->find( delimiter );
+    if ( ( delimiter.size() != 0 ) && ( foundIdx != std::string::npos ) )
     {
         result = this->substr( 0, foundIdx );
     }
@@ -247,15 +247,34 @@ RString& RString::leftPart_d( const std::string& delimiter )
 }
 
 /*!
-  @brief  デリミタで分割した文字列の右部分を返す
+  @brief  デリミタの左部分を返す(最長一致検索)
   @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
-  @return デリミタで分割した文字列の右部分
+  @return デリミタの左部分
+*/
+RString RString::leftPartR( const std::string& delimiter ) const
+{
+    return this->reverse().rightPart( RString(delimiter).reverse() ).reverse();
+}
+
+/*!
+  @brief  leftPartR()の破壊メソッド版
+*/
+RString& RString::leftPartR_d( const std::string& delimiter )
+{
+    *this = this->leftPartR( delimiter );
+    return *this;
+}
+
+/*!
+  @brief  デリミタの右部分を返す(最短一致検索)
+  @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
+  @return デリミタの右部分
 */
 RString RString::rightPart( const std::string& delimiter ) const
 {
-    RString result(*this);
-    std::string::size_type foundIdx = 0;
-    if ( ( foundIdx = this->find( delimiter ) ) != std::string::npos )
+    RString result;
+    std::string::size_type foundIdx = this->find( delimiter );
+    if ( ( delimiter.size() != 0 ) && ( foundIdx != std::string::npos ) )
     {
         std::string::size_type startIdx = foundIdx + delimiter.size();
         if ( startIdx < this->size() )
@@ -264,7 +283,7 @@ RString RString::rightPart( const std::string& delimiter ) const
         }
         else
         {
-            result = RString("");
+            result = "";
         }
     }
     return result;
@@ -276,6 +295,25 @@ RString RString::rightPart( const std::string& delimiter ) const
 RString& RString::rightPart_d( const std::string& delimiter )
 {
     *this = this->rightPart( delimiter );
+    return *this;
+}
+
+/*!
+  @brief  デリミタの右部分を返す(最長一致検索)
+  @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
+  @return デリミタの右部分
+*/
+RString RString::rightPartR( const std::string& delimiter ) const
+{
+    return this->reverse().leftPart( RString(delimiter).reverse() ).reverse();
+}
+
+/*!
+  @brief  rightPartR()の破壊メソッド版
+*/
+RString& RString::rightPartR_d( const std::string& delimiter )
+{
+    *this = this->rightPartR( delimiter );
     return *this;
 }
 
@@ -587,6 +625,31 @@ RString RString::downcase() const
 RString& RString::downcase_d()
 {
     *this = this->downcase();
+    return *this;
+}
+
+/*!
+  @brief  文字列を反転させる
+  @return 反転した文字列
+*/
+RString RString::reverse() const
+{
+    RString result;
+    for ( RString::const_reverse_iterator rit = this->rbegin();
+          rit != rend();
+          ++rit )
+    {
+        result += *rit;
+    }
+    return result;
+}
+
+/*!
+  @brief  reverse()の破壊メソッド版
+*/
+RString& RString::reverse_d()
+{
+    *this = this->reverse();
     return *this;
 }
 

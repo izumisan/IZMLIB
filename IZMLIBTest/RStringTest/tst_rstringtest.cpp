@@ -1,6 +1,6 @@
 #include <QtCore/QString>
 #include <QtTest/QtTest>
-
+#include <QDebug>
 #include "rstring.h"
 
 using namespace izm;
@@ -28,6 +28,8 @@ private Q_SLOTS:
     void test_include();
 
     void test_leftPart_rightPart();
+
+    void test_leftPartR_rightPartR();
 
     void test_upcase_data();
     void test_upcase();
@@ -155,27 +157,40 @@ void RStringTest::test_leftPart_rightPart()
     RString obj;
 
     obj = RString("aaa bbb");
-    QCOMPARE( obj.leftPart().to_s(), std::string("aaa") );
-    QCOMPARE( obj.rightPart().to_s(), std::string("bbb") );
-
     QCOMPARE( obj.leftPart(" ").to_s(), std::string("aaa") );
     QCOMPARE( obj.rightPart(" ").to_s(), std::string("bbb") );
 
+    // デリミタを指定しない場合、デフォルトのデリミタ(空白)が適用される
+    QCOMPARE( obj.leftPart().to_s(), std::string("aaa") );
+    QCOMPARE( obj.rightPart().to_s(), std::string("bbb") );
+
+    // デリミタが空文字の場合、空文字となる
+    QCOMPARE( obj.leftPart("").to_s(), std::string("") );
+    QCOMPARE( obj.rightPart("").to_s(),std::string("") );
+
+    // デリミタは文字列で指定できる
     obj = RString("aaabbbccc");
     QCOMPARE( obj.leftPart("bbb").to_s(), std::string("aaa") );
     QCOMPARE( obj.rightPart("bbb").to_s(), std::string("ccc") );
 
+    // 最初に見つけたデリミタの位置で分割される
+    QCOMPARE( obj.leftPart("b").to_s(), std::string("aaa") );
+    QCOMPARE( obj.rightPart("b").to_s(), std::string("bbccc") );
+
+    // 指定したデリミタが対象文字列の先頭だった場合、左部分は空文字となる
     obj = RString(",aaa");
     QCOMPARE( obj.leftPart(",").to_s(), std::string("") );
     QCOMPARE( obj.rightPart(",").to_s(), std::string("aaa") );
 
+    // 指定したデリミタが対象文字列の末尾だった場合、右部分は空文字となる
     obj = RString("aaa,");
     QCOMPARE( obj.leftPart(",").to_s(), std::string("aaa") );
     QCOMPARE( obj.rightPart(",").to_s(), std::string("") );
 
+    // デリミタが見つからない場合は、空文字となる
     obj = RString("aaabbb");
-    QCOMPARE( obj.leftPart(",").to_s(), std::string("aaabbb") );
-    QCOMPARE( obj.rightPart(",").to_s(), std::string("aaabbb") );
+    QCOMPARE( obj.leftPart(",").to_s(), std::string("") );
+    QCOMPARE( obj.rightPart(",").to_s(), std::string("") );
 
     //
     // オブジェクトが変更していないことの確認
@@ -198,7 +213,71 @@ void RStringTest::test_leftPart_rightPart()
     obj = RString("aaa bbb");
     obj.rightPart_d();
     QCOMPARE( obj.to_s(), std::string("bbb") );
+}
+//==============================================================================
+/*!
+*/
+void RStringTest::test_leftPartR_rightPartR()
+{
+    RString obj;
 
+    obj = RString("aaa bbb");
+    QCOMPARE( obj.leftPartR(" ").to_s(), std::string("aaa") );
+    QCOMPARE( obj.rightPartR(" ").to_s(), std::string("bbb") );
+
+    // デリミタを指定しない場合、デフォルトのデリミタ(空白)が適用される
+    QCOMPARE( obj.leftPartR().to_s(), std::string("aaa") );
+    QCOMPARE( obj.rightPartR().to_s(), std::string("bbb") );
+
+    // デリミタが空文字の場合、空文字となる
+    QCOMPARE( obj.leftPartR("").to_s(), std::string("") );
+    QCOMPARE( obj.rightPartR("").to_s(),std::string("") );
+
+    // デリミタは文字列で指定できる
+    obj = RString("aaabbbccc");
+    QCOMPARE( obj.leftPartR("bbb").to_s(), std::string("aaa") );
+    QCOMPARE( obj.rightPartR("bbb").to_s(), std::string("ccc") );
+
+    // 最後に見つけたデリミタの位置で分割される
+    QCOMPARE( obj.leftPartR("b").to_s(), std::string("aaabb") );
+    QCOMPARE( obj.rightPartR("b").to_s(), std::string("ccc") );
+
+    // 指定したデリミタが対象文字列の先頭だった場合、左部分は空文字となる
+    obj = RString(",aaa");
+    QCOMPARE( obj.leftPartR(",").to_s(), std::string("") );
+    QCOMPARE( obj.rightPartR(",").to_s(), std::string("aaa") );
+
+    // 指定したデリミタが対象文字列の末尾だった場合、右部分は空文字となる
+    obj = RString("aaa,");
+    QCOMPARE( obj.leftPartR(",").to_s(), std::string("aaa") );
+    QCOMPARE( obj.rightPartR(",").to_s(), std::string("") );
+
+    // デリミタが見つからない場合は、空文字となる
+    obj = RString("aaabbb");
+    QCOMPARE( obj.leftPartR(",").to_s(), std::string("") );
+    QCOMPARE( obj.rightPartR(",").to_s(), std::string("") );
+
+    //
+    // オブジェクトが変更していないことの確認
+    //
+    obj = RString("aaa bbb");
+    obj.leftPartR();
+    QCOMPARE( obj.to_s(), std::string("aaa bbb") );
+
+    obj = RString("aaa bbb");
+    obj.rightPartR();
+    QCOMPARE( obj.to_s(), std::string("aaa bbb") );
+
+    //
+    // 破壊メソッドの確認
+    //
+    obj = RString("aaa bbb");
+    obj.leftPartR_d();
+    QCOMPARE( obj.to_s(), std::string("aaa") );
+
+    obj = RString("aaa bbb");
+    obj.rightPartR_d();
+    QCOMPARE( obj.to_s(), std::string("bbb") );
 }
 //==============================================================================
 /*!

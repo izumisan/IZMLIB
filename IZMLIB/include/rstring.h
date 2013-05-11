@@ -54,13 +54,21 @@ public:
     // 分割
     std::vector<RString> split( const std::string& delimiter = " " ) const;
 
-    // 左部分
+    // 左部分(最短一致検索)
     RString  leftPart( const std::string& delimiter = " " ) const;
-    RString& leftPart_d( const std::string& delimiter = " " );
+    RString& leftPart_d( const std::string& delimiter = " " );     // 破壊メソッド
 
-    // 右部分
+    // 左部分(最長一致検索)
+    RString  leftPartR( const std::string& delimiter = " " ) const;
+    RString& leftPartR_d( const std::string& delimiter = " " );    // 破壊メソッド
+
+    // 右部分(最短一致検索)
     RString  rightPart( const std::string& delimiter = " " ) const;
-    RString& rightPart_d( const std::string& delimiter = " " );
+    RString& rightPart_d( const std::string& delimiter = " " );    // 破壊メソッド
+
+    // 右部分(最長一致検索)
+    RString  rightPartR( const std::string& delimiter = " " ) const;
+    RString& rightPartR_d( const std::string& delimiter = " " );   // 破壊メソッド
 
     // 改行コードの削除
     RString  chomp() const;
@@ -101,12 +109,17 @@ public:
     RString  gsub( const std::string& before, const std::string& after ) const;
     RString& gsub_d( const std::string& before, const std::string& after );     // 破壊メソッド
 
-    // 大文字 <=> 小文字
+    // 大文字
     RString  upcase() const;
-    RString& upcase_d();        // 破壊メソッド
+    RString& upcase_d();      // 破壊メソッド
 
+    // 小文字
     RString  downcase() const;
-    RString& downcase_d();      // 破壊メソッド
+    RString& downcase_d();    // 破壊メソッド
+
+    // 反転
+    RString  reverse() const;
+    RString& reverse_d();     // 破壊メソッド
 };
 
 } // namcespace izm
