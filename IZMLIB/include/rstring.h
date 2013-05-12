@@ -54,19 +54,19 @@ public:
     // 分割
     std::vector<RString> split( const std::string& delimiter = " " ) const;
 
-    // 左部分(最短一致検索)
+    // 左部分(左最短)
     RString  leftPart( const std::string& delimiter = " " ) const;
     RString& leftPart_d( const std::string& delimiter = " " );     // 破壊メソッド
 
-    // 左部分(最長一致検索)
+    // 左部分(左最長)
     RString  leftPartR( const std::string& delimiter = " " ) const;
     RString& leftPartR_d( const std::string& delimiter = " " );    // 破壊メソッド
 
-    // 右部分(最短一致検索)
+    // 右部分(右最長)
     RString  rightPart( const std::string& delimiter = " " ) const;
     RString& rightPart_d( const std::string& delimiter = " " );    // 破壊メソッド
 
-    // 右部分(最長一致検索)
+    // 右部分(右最短)
     RString  rightPartR( const std::string& delimiter = " " ) const;
     RString& rightPartR_d( const std::string& delimiter = " " );   // 破壊メソッド
 
@@ -77,6 +77,14 @@ public:
     // 末尾文字の削除
     RString  chop() const;
     RString& chop_d();      // 破壊メソッド
+
+    // 先頭n文字の削除
+    RString  shift( const size_t n ) const;
+    RString& shift_d( const size_t n );      // 破壊メソッド
+
+    // 末尾n文字の削除
+    RString  unshift( const size_t n ) const;
+    RString& unshift_d( const size_t n );    // 破壊メソッド
 
     // 空白類文字の削除
     RString  strip() const;

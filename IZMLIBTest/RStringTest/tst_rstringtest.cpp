@@ -31,6 +31,12 @@ private Q_SLOTS:
 
     void test_leftPartR_rightPartR();
 
+    void test_shift_data();
+    void test_shift();
+
+    void test_unshift_data();
+    void test_unshift();
+
     void test_upcase_data();
     void test_upcase();
 
@@ -278,6 +284,64 @@ void RStringTest::test_leftPartR_rightPartR()
     obj = RString("aaa bbb");
     obj.rightPartR_d();
     QCOMPARE( obj.to_s(), std::string("bbb") );
+}
+//==============================================================================
+/*!
+*/
+void RStringTest::test_shift_data()
+{
+    QTest::addColumn<QString>("_instance");
+    QTest::addColumn<size_t>("_arg");
+    QTest::addColumn<QString>("_expected");
+
+    QTest::newRow("case0") << "abc" << 0u << "abc";
+    QTest::newRow("case1") << "abc" << 1u << "bc";
+    QTest::newRow("case2") << "abc" << 2u << "c";
+    QTest::newRow("case3") << "abc" << 3u << "";
+    QTest::newRow("over_size") << "abc" << 4u << "";
+}
+
+void RStringTest::test_shift()
+{
+    QFETCH( QString, _instance );
+    QFETCH( size_t, _arg );
+    QFETCH( QString, _expected );
+
+    RString obj( _instance.toStdString() );
+    std::string actual = obj.shift(_arg).toStdString();  // shift()
+    QCOMPARE( actual, _expected.toStdString() );
+
+    actual = obj.shift_d(_arg).toStdString();  // shift_d()
+    QCOMPARE( actual, _expected.toStdString() );
+}
+//==============================================================================
+/*!
+*/
+void RStringTest::test_unshift_data()
+{
+    QTest::addColumn<QString>("_instance");
+    QTest::addColumn<size_t>("_arg");
+    QTest::addColumn<QString>("_expected");
+
+    QTest::newRow("case0") << "abc" << 0u << "abc";
+    QTest::newRow("case1") << "abc" << 1u << "ab";
+    QTest::newRow("case2") << "abc" << 2u << "a";
+    QTest::newRow("case3") << "abc" << 3u << "";
+    QTest::newRow("over_size") << "abc" << 4u << "";
+}
+
+void RStringTest::test_unshift()
+{
+    QFETCH( QString, _instance );
+    QFETCH( size_t, _arg );
+    QFETCH( QString, _expected );
+
+    RString obj( _instance.toStdString() );
+    std::string actual = obj.unshift(_arg).toStdString();  // unshift()
+    QCOMPARE( actual, _expected.toStdString() );
+
+    actual = obj.unshift_d(_arg).toStdString();  // unshift_d()
+    QCOMPARE( actual, _expected.toStdString() );
 }
 //==============================================================================
 /*!

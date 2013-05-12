@@ -222,7 +222,7 @@ std::vector<RString> RString::split( const std::string& delimiter ) const
 }
 
 /*!
-  @brief  デリミタの左部分を返す(最短一致検索)
+  @brief  デリミタの左部分を返す(左最短)
   @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
   @return デリミタの左部分
 */
@@ -247,7 +247,7 @@ RString& RString::leftPart_d( const std::string& delimiter )
 }
 
 /*!
-  @brief  デリミタの左部分を返す(最長一致検索)
+  @brief  デリミタの左部分を返す(左最長)
   @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
   @return デリミタの左部分
 */
@@ -266,7 +266,7 @@ RString& RString::leftPartR_d( const std::string& delimiter )
 }
 
 /*!
-  @brief  デリミタの右部分を返す(最短一致検索)
+  @brief  デリミタの右部分を返す(右最長)
   @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
   @return デリミタの右部分
 */
@@ -299,7 +299,7 @@ RString& RString::rightPart_d( const std::string& delimiter )
 }
 
 /*!
-  @brief  デリミタの右部分を返す(最長一致検索)
+  @brief  デリミタの右部分を返す(右最短)
   @param  [in]  delimiter  デリミタ (デフォルト引数=" ")
   @return デリミタの右部分
 */
@@ -366,6 +366,56 @@ RString RString::chop() const
 RString& RString::chop_d()
 {
     *this = this->chop();
+    return *this;
+}
+
+/*!
+  @brief  先頭のn文字を削除する
+  @param  [in]  n  削除する文字数
+  @return 先頭のn文字を削除した文字列
+*/
+RString RString::shift( const size_t n ) const
+{
+    RString result;
+    if ( n <= this->size() )
+    {
+        result = *this;
+        result.erase( 0, n );
+    }
+    return result;
+}
+
+/*!
+  @brief  shift()の破壊メソッド版
+*/
+RString& RString::shift_d( const size_t n )
+{
+    *this = this->shift( n );
+    return *this;
+}
+
+/*!
+  @brief  末尾のn文字を削除する
+  @param  [in]  n  削除する文字数
+  @return 末尾のn文字を削除した文字列
+*/
+RString RString::unshift( const size_t n ) const
+{
+    RString result;
+    if ( n <= this->size() )
+    {
+        result = *this;
+        result.erase( result.size() - n );
+    }
+    return result;
+}
+
+/*!
+  @brief  unshift()の破壊メソッド版
+*/
+RString& RString::unshift_d( const size_t n )
+{
+    *this = this->unshift( n );
     return *this;
 }
 
