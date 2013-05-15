@@ -15,7 +15,6 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 include(../IZMLIBTest.pri)
-include(SimpleDllLoaderWinTest.pri)
 
 SOURCES += tst_simpledllloaderwintest.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"

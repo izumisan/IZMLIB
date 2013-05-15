@@ -1,7 +1,9 @@
 TEMPLATE = subdirs
 
-CONFIG += ordered
+CONFIG += testcase
+#CONFIG += ordered
 
 SUBDIRS = \
     RStringTest \
-    utilTest
+    utilTest \
+    SimpleDllLoaderWinTest/SimpleDllLoaderWinTestBuilder.pro

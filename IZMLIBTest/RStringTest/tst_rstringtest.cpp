@@ -37,6 +37,15 @@ private Q_SLOTS:
     void test_unshift_data();
     void test_unshift();
 
+    void test_lstrip_ltrim_data();
+    void test_lstrip_ltrim();
+
+    void test_rstrip_rtrim_data();
+    void test_rstrip_rtrim();
+
+    void test_strip_trim_data();
+    void test_strip_trim();
+
     void test_upcase_data();
     void test_upcase();
 
@@ -342,6 +351,126 @@ void RStringTest::test_unshift()
 
     actual = obj.unshift_d(_arg).toStdString();  // unshift_d()
     QCOMPARE( actual, _expected.toStdString() );
+}
+//==============================================================================
+/*!
+*/
+void RStringTest::test_lstrip_ltrim_data()
+{
+    QTest::addColumn<QString>("_instance");
+    QTest::addColumn<QString>("_expected");
+
+    QTest::newRow("space") << " abc " << "abc ";
+    QTest::newRow("forword") << "\fabc\f" << "abc\f";
+    QTest::newRow("new line") << "\nabc\n" << "abc\n";
+    QTest::newRow("return") << "\rabc\r" << "abc\r";
+    QTest::newRow("tab") << "\tabc\t" << "abc\t";
+    QTest::newRow("vtab") << "\vabc\v" << "abc\v";
+    QTest::newRow("all") << " \f\n\r\t\vabc \f\n\r\t\v" << "abc \f\n\r\t\v";
+    QTest::newRow("empty") << "" << "";
+    QTest::newRow("no change") << "a b c" << "a b c";
+}
+
+void RStringTest::test_lstrip_ltrim()
+{
+    QFETCH( QString, _instance );
+    QFETCH( QString, _expected );
+
+    RString obj( _instance.toStdString() );
+    RString actual = obj.lstrip();
+    QCOMPARE( actual.toStdString(), _expected.toStdString() );
+
+    // lstripとltrimの結果は等しい
+    RString obj1( _instance.toStdString() );
+    RString obj2( _instance.toStdString() );
+    QVERIFY( obj1.lstrip() == obj2.ltrim() );
+
+    // 破壊メソッドの確認
+    obj1.lstrip_d();
+    QCOMPARE( obj1.toStdString(), _expected.toStdString() );
+
+    obj2.ltrim_d();
+    QCOMPARE( obj2.toStdString(), _expected.toStdString() );
+}
+//==============================================================================
+/*!
+*/
+void RStringTest::test_rstrip_rtrim_data()
+{
+    QTest::addColumn<QString>("_instance");
+    QTest::addColumn<QString>("_expected");
+
+    QTest::newRow("space") << " abc " << " abc";
+    QTest::newRow("forword") << "\fabc\f" << "\fabc";
+    QTest::newRow("new line") << "\nabc\n" << "\nabc";
+    QTest::newRow("return") << "\rabc\r" << "\rabc";
+    QTest::newRow("tab") << "\tabc\t" << "\tabc";
+    QTest::newRow("vtab") << "\vabc\v" << "\vabc";
+    QTest::newRow("all") << " \f\n\r\t\vabc \f\n\r\t\v" << " \f\n\r\t\vabc";
+    QTest::newRow("empty") << "" << "";
+    QTest::newRow("no change") << "a b c" << "a b c";
+}
+
+void RStringTest::test_rstrip_rtrim()
+{
+    QFETCH( QString, _instance );
+    QFETCH( QString, _expected );
+
+    RString obj( _instance.toStdString() );
+    RString actual = obj.rstrip();
+    QCOMPARE( actual.toStdString(), _expected.toStdString() );
+
+    // rstripとrtrimの結果は等しい
+    RString obj1( _instance.toStdString() );
+    RString obj2( _instance.toStdString() );
+    QVERIFY( obj1.rstrip() == obj2.rtrim() );
+
+    // 破壊メソッドの確認
+    obj1.rstrip_d();
+    QCOMPARE( obj1.toStdString(), _expected.toStdString() );
+
+    obj2.rtrim_d();
+    QCOMPARE( obj2.toStdString(), _expected.toStdString() );
+}
+//==============================================================================
+/*!
+*/
+void RStringTest::test_strip_trim_data()
+{
+    QTest::addColumn<QString>("_instance");
+    QTest::addColumn<QString>("_expected");
+
+    QTest::newRow("space") << " abc " << "abc";
+    QTest::newRow("forword") << "\fabc\f" << "abc";
+    QTest::newRow("new line") << "\nabc\n" << "abc";
+    QTest::newRow("return") << "\rabc\r" << "abc";
+    QTest::newRow("tab") << "\tabc\t" << "abc";
+    QTest::newRow("vtab") << "\vabc\v" << "abc";
+    QTest::newRow("all") << " \f\n\r\t\vabc \f\n\r\t\v" << "abc";
+    QTest::newRow("empty") << "" << "";
+    QTest::newRow("no change") << "a b c" << "a b c";
+}
+
+void RStringTest::test_strip_trim()
+{
+    QFETCH( QString, _instance );
+    QFETCH( QString, _expected );
+
+    RString obj( _instance.toStdString() );
+    RString actual = obj.strip();
+    QCOMPARE( actual.toStdString(), _expected.toStdString() );
+
+    // stripとtrimの結果は等しい
+    RString obj1( _instance.toStdString() );
+    RString obj2( _instance.toStdString() );
+    QVERIFY( obj1.strip() == obj2.trim() );
+
+    // 破壊メソッドの確認
+    obj1.strip_d();
+    QCOMPARE( obj1.toStdString(), _expected.toStdString() );
+
+    obj2.trim_d();
+    QCOMPARE( obj2.toStdString(), _expected.toStdString() );
 }
 //==============================================================================
 /*!

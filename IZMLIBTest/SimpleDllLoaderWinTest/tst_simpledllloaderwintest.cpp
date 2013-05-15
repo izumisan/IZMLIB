@@ -8,7 +8,7 @@
 
 using namespace izm;
 
-const std::string DLL_FILE_PATH("TestDLL/debug/TestDLL.dll");
+const std::string DLL_FILE_PATH("TestDLL.dll");
 
 class SimpleDllLoaderWinTest : public QObject
 {

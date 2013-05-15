@@ -179,10 +179,6 @@ bool RString::include( const std::string& str ) const
     {
         result = true;
     }
-    else
-    {
-        result = false;
-    }
     return result;
 }
 
@@ -327,12 +323,12 @@ RString RString::chomp() const
     // 末尾文字がLFの場合は削除する
     if( result.last() == '\n' )
     {
-        result = result.erase( result.size() - 1 );
+        result.erase( result.size() - 1 );
     }
     // 末尾文字がCRの場合は削除する
     if( result.last() == '\r' )
     {
-        result = result.erase( result.size() - 1 );
+        result.erase( result.size() - 1 );
     }
     return result;
 }
@@ -355,7 +351,7 @@ RString RString::chop() const
     RString result(*this);
     if( !( result.empty() ) )
     {
-        result = result.erase( result.size() - 1 );
+        result.erase( result.size() - 1 );
     }
     return result;
 }
@@ -426,7 +422,7 @@ RString& RString::unshift_d( const size_t n )
 */
 RString RString::strip() const
 {
-    RString result("");
+    RString result(*this);
     result = result.lstrip();
     result = result.rstrip();
     return result;
@@ -448,11 +444,11 @@ RString& RString::strip_d()
 */
 RString RString::lstrip() const
 {
-    RString result("");
-    std::string::size_type foundIdx = this->find_first_not_of(" \f\n\r\t\v");
+    RString result(*this);
+    std::string::size_type foundIdx = result.find_first_not_of(" \f\n\r\t\v");
     if ( foundIdx != std::string::npos )
     {
-        result = this->substr( foundIdx, std::string::npos );
+        result = result.substr( foundIdx, std::string::npos );
     }
     return result;
 }
@@ -473,11 +469,11 @@ RString& RString::lstrip_d()
 */
 RString RString::rstrip() const
 {
-    RString result("");
-    std::string::size_type foundIdx = this->find_last_not_of(" \f\n\r\t\v");
+    RString result(*this);
+    std::string::size_type foundIdx = result.find_last_not_of(" \f\n\r\t\v");
     if ( foundIdx != std::string::npos )
     {
-        result = this->substr( 0, foundIdx + 1 );
+        result = result.substr( 0, foundIdx + 1 );
     }
     return result;
 }
@@ -552,7 +548,7 @@ RString RString::remove( const std::string& str ) const
         std::string::size_type foundIdx = 0;
         while( ( foundIdx = result.find( str ) ) != std::string::npos )
         {
-            result = result.erase( foundIdx, str.size() );
+            result.erase( foundIdx, str.size() );
         }
     }
     return result;
@@ -581,7 +577,7 @@ RString RString::sub( const std::string& before, const std::string& after ) cons
         std::string::size_type foundIdx = 0;
         if( ( foundIdx = result.find_first_of( before ) ) != std::string::npos )
         {
-            result = result.replace( foundIdx, before.size(), after );
+            result.replace( foundIdx, before.size(), after );
         }
     }
     return result;

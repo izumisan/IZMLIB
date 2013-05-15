@@ -2,6 +2,7 @@ TEMPLATE = lib
 CONFIG += dll
 
 TARGET = TestDLL
+DLLDESTDIR = $${PWD}/../
 
 DEFINES += EXPORTS
 

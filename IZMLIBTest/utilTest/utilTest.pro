@@ -15,7 +15,6 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 include(../IZMLIBTest.pri)
-include(utilTest.pri)
 
 SOURCES += tst_utiltest.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"

@@ -79,12 +79,12 @@ public:
     RString& chop_d();      // 破壊メソッド
 
     // 先頭n文字の削除
-    RString  shift( const size_t n ) const;
-    RString& shift_d( const size_t n );      // 破壊メソッド
+    RString  shift( const size_t n = 1u ) const;
+    RString& shift_d( const size_t n = 1u );      // 破壊メソッド
 
     // 末尾n文字の削除
-    RString  unshift( const size_t n ) const;
-    RString& unshift_d( const size_t n );    // 破壊メソッド
+    RString  unshift( const size_t n = 1u ) const;
+    RString& unshift_d( const size_t n = 1u );    // 破壊メソッド
 
     // 空白類文字の削除
     RString  strip() const;
