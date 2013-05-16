@@ -1,8 +1,10 @@
+# IZMLIB用テストプロジェクトの共通priファイル
+
+CONFIG += testcase
+
 IZMLIB_TOP = $${PWD}/../IZMLIB/
 IZMLIB_INC = $${IZMLIB_TOP}/include/
 IZMLIB_SRC = $${IZMLIB_TOP}/src/
-
-CONFIG += testcase
 
 INCLUDEPATH += \
     $${IZMLIB_INC}

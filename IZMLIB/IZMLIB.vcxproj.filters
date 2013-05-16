@@ -10,6 +10,12 @@
     <ClCompile Include="src\simpledllloaderwin.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\inifilemanager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\inifilemanagerimpl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\util.h">
@@ -20,6 +26,12 @@
     </ClInclude>
     <ClInclude Include="include\simpledllloaderwin.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\inifilemanager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\inifilemanagerimpl.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

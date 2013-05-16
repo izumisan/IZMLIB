@@ -1,9 +1,9 @@
 TEMPLATE = subdirs
 
-CONFIG += testcase
-#CONFIG += ordered
+CONFIG += ordered
 
 SUBDIRS = \
+    IniFileManagerTest \
     RStringTest \
+    SimpleDllLoaderWinTest/SimpleDllLoaderWinTestBuilder.pro \
     utilTest \
-    SimpleDllLoaderWinTest/SimpleDllLoaderWinTestBuilder.pro
