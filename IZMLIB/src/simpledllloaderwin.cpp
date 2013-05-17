@@ -16,29 +16,16 @@ SimpleDllLoaderWin::SimpleDllLoaderWin()
 }
 
 /*!
-  @brief  コピーコンストラクタ
-*/
-SimpleDllLoaderWin::SimpleDllLoaderWin( const SimpleDllLoaderWin& rhs )
-    : m_loadFile(rhs.m_loadFile), m_handler(rhs.m_handler)
-{
-}
-
-/*!
   @brief  デストラクタ
-  @note   DLLのアンロードは行わない.
 */
 SimpleDllLoaderWin::~SimpleDllLoaderWin()
 {
-}
-
-/*!
-  @brief  代入演算子
-*/
-SimpleDllLoaderWin& SimpleDllLoaderWin::operator =( const SimpleDllLoaderWin& rhs )
-{
-    m_loadFile = rhs.m_loadFile;
-    m_handler = rhs.m_handler;
-    return *this;
+    if ( m_handler != 0 )
+    {
+        ::FreeLibrary( m_handler );
+        m_handler = 0;
+    }
+    m_loadFile.clear();
 }
 
 /*!

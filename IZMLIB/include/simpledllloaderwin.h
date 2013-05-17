@@ -15,12 +15,12 @@ class SimpleDllLoaderWin
 {
 public:
     SimpleDllLoaderWin();
-    SimpleDllLoaderWin( const SimpleDllLoaderWin& rhs );
-
     virtual ~SimpleDllLoaderWin();
+private:
+    SimpleDllLoaderWin( const SimpleDllLoaderWin& rhs );  // コピー禁止
 
-public:
-    SimpleDllLoaderWin& operator =( const SimpleDllLoaderWin& rhs );
+private:
+    SimpleDllLoaderWin& operator =( const SimpleDllLoaderWin& rhs );  // コピー禁止
 
 public:
     bool load( const std::string& loadFile );
