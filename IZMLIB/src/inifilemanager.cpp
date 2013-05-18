@@ -11,17 +11,6 @@
 namespace izm
 {
 
-//  静的メソッド
-//------------------------------------------------------------------------------
-/*!
-  @brief  唯一のインスタンスを取得する.    [static]
-*/
-IniFileManager * const IniFileManager::instance()
-{
-    static IniFileManager* obj = new IniFileManager();
-    return obj;
-}
-
 //  コンストラクタ・デストラクタ
 //------------------------------------------------------------------------------
 /*!
@@ -30,6 +19,15 @@ IniFileManager * const IniFileManager::instance()
 IniFileManager::IniFileManager()
     : m_impl(new internal::IniFileManagerImpl())
 {
+}
+
+/*!
+  @brief  コピーコンストラクタ
+*/
+IniFileManager::IniFileManager( const IniFileManager& rhs )
+    : m_impl(new internal::IniFileManagerImpl())
+{
+    *m_impl = *(rhs.m_impl);
 }
 
 /*!
@@ -46,11 +44,21 @@ IniFileManager::~IniFileManager()
 //  演算子
 //------------------------------------------------------------------------------
 /*!
+  @brief  代入演算子
 */
-//std::string& IniFileManager::operator []( const std::string& key )
-//{
-//    return m_impl->operator [](key);
-//}
+IniFileManager& IniFileManager::operator =( const IniFileManager& rhs )
+{
+    *m_impl = *(rhs.m_impl);
+    return *this;
+}
+
+/*!
+  @brief  operator []
+*/
+std::string& IniFileManager::operator []( const std::string& key )
+{
+    return (*m_impl)[key];
+}
 
 //  操作
 //------------------------------------------------------------------------------

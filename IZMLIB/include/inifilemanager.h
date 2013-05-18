@@ -18,28 +18,18 @@ class IniFileManagerImpl;  // 前方宣言
 
 class IniFileManager
 {
-    //  静的メソッド
-    //--------------------------------------------------------------------------
-public:
-    static IniFileManager * const instance();
-
-
     //  コンストラクタ・デストラクタ
     //--------------------------------------------------------------------------
-protected:
-    IniFileManager();
-private:
-    IniFileManager( const IniFileManager& rhs );  // 使用禁止
 public:
+    IniFileManager();
+    explicit IniFileManager( const IniFileManager& rhs );
     virtual ~IniFileManager();
-
 
     //  演算子
     //--------------------------------------------------------------------------
-private:
-    IniFileManager& operator =( const IniFileManager& rhs );  // 使用禁止
 public:
-    //std::string& operator []( const std::string& key );
+    IniFileManager& operator =( const IniFileManager& rhs );
+    std::string& operator []( const std::string& key );
 
     //  操作
     //--------------------------------------------------------------------------
@@ -66,8 +56,7 @@ public:
     void setValue( const std::string& key, const std::string& value );
     void setValue( const std::string& section, const std::string& key, const std::string& value );
 
-
-    //  メンバ変数
+    //  フィールド
     //--------------------------------------------------------------------------
 private:
     internal::IniFileManagerImpl* m_impl;

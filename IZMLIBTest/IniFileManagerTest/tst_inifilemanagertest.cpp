@@ -23,6 +23,10 @@ private Q_SLOTS:
     void init();
     void cleanup();
 
+    void test_copy_constructor();  // コピーコンストラクタ
+    void test_operator_equal();    // operator =
+    void test_operator_indexer();  // operator []
+
     void test_basic_function();  // 基本機能の確認
 
     void test_sections();
@@ -41,7 +45,6 @@ IniFileManagerTest::IniFileManagerTest()
 
 void IniFileManagerTest::initTestCase()
 {
-    m_mgr = IniFileManager::instance();
 }
 
 void IniFileManagerTest::cleanupTestCase()
@@ -50,10 +53,66 @@ void IniFileManagerTest::cleanupTestCase()
 
 void IniFileManagerTest::init()
 {
+    m_mgr = new IniFileManager();
 }
 
 void IniFileManagerTest::cleanup()
 {
+    delete m_mgr;
+    m_mgr = 0;
+}
+//==============================================================================
+/*!
+  @brief  コピーコンストラクタの確認
+*/
+void IniFileManagerTest::test_copy_constructor()
+{
+    m_mgr->load( TEST_INI_FILE_MINI );
+
+    IniFileManager dest( *m_mgr );
+
+    QCOMPARE( dest.iniFilePath(), TEST_INI_FILE_MINI );
+    QCOMPARE( dest.hasSection("section"), true );
+    QCOMPARE( dest.hasKey("section/key"), true );
+    QCOMPARE( dest.value("section/key"), std::string("value") );
+}
+//==============================================================================
+/*!
+  @brief  代入演算子の確認
+*/
+void IniFileManagerTest::test_operator_equal()
+{
+    m_mgr->load( TEST_INI_FILE_MINI );
+
+    IniFileManager dest;
+    dest = *m_mgr;
+
+    QCOMPARE( dest.iniFilePath(), TEST_INI_FILE_MINI );
+    QCOMPARE( dest.hasSection("section"), true );
+    QCOMPARE( dest.hasKey("section/key"), true );
+    QCOMPARE( dest.value("section/key"), std::string("value") );
+}
+//==============================================================================
+/*!
+  @brief  operator[] の確認
+*/
+void IniFileManagerTest::test_operator_indexer()
+{
+    m_mgr->load( TEST_INI_FILE_MINI );
+
+    // 値の取得
+    QCOMPARE( (*m_mgr)["section/key"], std::string("value") );
+
+    // 値の上書き
+    (*m_mgr)["section/key"] = "hoge";
+    QCOMPARE( (*m_mgr)["section/key"], std::string("hoge") );
+    QCOMPARE( m_mgr->value("section/key"), std::string("hoge") );
+
+    // key-valueの新規登録
+    QCOMPARE( m_mgr->hasKey("sec1/key1"), false );
+    (*m_mgr)["sec1/key1"] = "new_value";  // 新規登録
+    QCOMPARE( m_mgr->hasKey("sec1/key1"), true );
+    QCOMPARE( m_mgr->value("sec1/key1"), std::string("new_value") );
 }
 //==============================================================================
 /*!

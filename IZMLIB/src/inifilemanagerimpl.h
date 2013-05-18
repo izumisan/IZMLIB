@@ -26,7 +26,7 @@ public:
     //--------------------------------------------------------------------------
 public:
     IniFileManagerImpl& operator = ( const IniFileManagerImpl& rhs );
-    //RString& operator []( const RString& key );
+    RString& operator []( const RString& key );
 
     //  操作
     //--------------------------------------------------------------------------
@@ -48,7 +48,7 @@ public:
     void changeFilePath( const RString& newFilePath );
 
     bool save() const;
-    bool saveAs( const RString& otherFilePath );
+    bool saveAs( const RString& newFilePath );
 
     void setValue( const RString& key, const RString& value );
     void setValue( const RString& section, const RString& key, const RString& value );
@@ -60,7 +60,7 @@ private:
     bool registerKeyValue( const RString& key, const RString& value );
     bool checkExtension( const RString& loadFile ) const;
 
-    //  メンバ変数
+    //  フィールド
     //--------------------------------------------------------------------------
 private:
     RString m_iniFilePath;

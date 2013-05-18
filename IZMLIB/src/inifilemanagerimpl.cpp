@@ -26,7 +26,7 @@ IniFileManagerImpl::IniFileManagerImpl()
 }
 
 /*!
-  @brief  コンストラクタ
+  @brief  コピーコンストラクタ
 */
 IniFileManagerImpl::IniFileManagerImpl( const IniFileManagerImpl& rhs )
     : m_iniFilePath()
@@ -59,11 +59,12 @@ IniFileManagerImpl& IniFileManagerImpl::operator = ( const IniFileManagerImpl& r
 }
 
 /*!
+  @brief  operator []
 */
-//RString& IniFileManagerImpl::operator []( const RString& key )
-//{
-//    return m_data->find( key )->second;
-//}
+RString& IniFileManagerImpl::operator []( const RString& key )
+{
+    return (*m_data)[key];
+}
 
 //  操作
 //------------------------------------------------------------------------------
@@ -237,10 +238,10 @@ bool IniFileManagerImpl::save() const
 
 /*!
 */
-bool IniFileManagerImpl::saveAs( const RString& otherFilePath )
+bool IniFileManagerImpl::saveAs( const RString& newFilePath )
 {
     bool result = false;
-    m_iniFilePath = otherFilePath;
+    m_iniFilePath = newFilePath;
     result = save();
     return result;
 }
