@@ -1,6 +1,5 @@
 # IZMLIB用テストプロジェクトの共通priファイル
 
-CONFIG += testcase
 CONFIG += msvc
 msvc: include(msvc.pri)
 

@@ -1,5 +1,5 @@
-#include <QtCore/QString>
-#include <QtTest/QtTest>
+#include <QString>
+#include <QtTest>
 #include <QDebug>
 #include "rstring.h"
 
@@ -300,7 +300,7 @@ void RStringTest::test_leftPartR_rightPartR()
 void RStringTest::test_shift_data()
 {
     QTest::addColumn<QString>("_instance");
-    QTest::addColumn<size_t>("_arg");
+    QTest::addColumn<unsigned int>("_arg");
     QTest::addColumn<QString>("_expected");
 
     QTest::newRow("case0") << "abc" << 0u << "abc";
@@ -313,7 +313,7 @@ void RStringTest::test_shift_data()
 void RStringTest::test_shift()
 {
     QFETCH( QString, _instance );
-    QFETCH( size_t, _arg );
+    QFETCH( unsigned int, _arg );
     QFETCH( QString, _expected );
 
     RString obj( _instance.toStdString() );
@@ -329,7 +329,7 @@ void RStringTest::test_shift()
 void RStringTest::test_unshift_data()
 {
     QTest::addColumn<QString>("_instance");
-    QTest::addColumn<size_t>("_arg");
+    QTest::addColumn<unsigned int>("_arg");
     QTest::addColumn<QString>("_expected");
 
     QTest::newRow("case0") << "abc" << 0u << "abc";
@@ -342,7 +342,7 @@ void RStringTest::test_unshift_data()
 void RStringTest::test_unshift()
 {
     QFETCH( QString, _instance );
-    QFETCH( size_t, _arg );
+    QFETCH( unsigned int, _arg );
     QFETCH( QString, _expected );
 
     RString obj( _instance.toStdString() );
