@@ -19,6 +19,8 @@ CONFIG(debug, debug|release) {
 
 include(src/izm.pri)
 
+OTHER_FILES += $${IZMLIBDIR}/makeinclude.bat
+
 msvc {
     QMAKE_POST_LINK += $$quote(call makeinclude.bat)
 }

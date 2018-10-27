@@ -2,8 +2,6 @@
 
 IZMDIR = $${PWD}
 
-include(literals/literals.pri)
-
 INCLUDEPATH += \
     $${IZMDIR}
 
@@ -12,3 +10,5 @@ HEADERS += \
 
 SOURCES += \
     $${IZMDIR}/*.cpp
+
+include(literals/literals.pri)

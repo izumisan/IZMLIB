@@ -7,7 +7,8 @@ namespace literals
 {
 
 /*!
-  @brief  1.0_km -> 1000.0 [m]
+  @brief  _kmリテラル
+  @example 1.0_km -> 1000.0 [m]
 */
 constexpr double operator""_km( const long double km )
 {
@@ -15,7 +16,8 @@ constexpr double operator""_km( const long double km )
 }
 
 /*!
-  @brief  1.0_m -> 1.0 [m]
+  @brief  _mリテラル
+  @example 1.0_m -> 1.0 [m]
 */
 constexpr double operator""_m( const long double m )
 {
@@ -23,7 +25,8 @@ constexpr double operator""_m( const long double m )
 }
 
 /*!
-  @brief  100.0_cm -> 1.0 [m]
+  @brief  _cmリテラル
+  @example 100.0_cm -> 1.0 [m]
 */
 constexpr double operator""_cm( const long double cm )
 {
@@ -31,7 +34,8 @@ constexpr double operator""_cm( const long double cm )
 }
 
 /*!
-  @brief  1000.0_mm -> 1.0 [m]
+  @brief  _mmリテラル
+  @example 1000.0_mm -> 1.0 [m]
 */
 constexpr double operator""_mm( const long double mm )
 {
@@ -40,5 +44,9 @@ constexpr double operator""_mm( const long double mm )
 
 } // namespace literals
 } // namespace izm
+
+#if !defined(NO_USING_IZM_LITERALS)
+using namespace izm::literals;
+#endif
 
 #endif // IZM_LITERALS_LENGTHLITERALS_H

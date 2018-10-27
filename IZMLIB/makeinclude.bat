@@ -1,6 +1,8 @@
 @echo off
 cd %~dp0
 
+echo Make include directory...
+
 set INCLUDEDIR=include
 
 if exist %INCLUDEDIR% (
