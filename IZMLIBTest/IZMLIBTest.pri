@@ -1,6 +1,8 @@
-# IZMLIB—pƒeƒXƒgƒvƒƒWƒFƒNƒg‚Ì‹¤’Êpriƒtƒ@ƒCƒ‹
+# IZMLIBç”¨ãƒ†ã‚¹ãƒˆãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®å…±é€špriãƒ•ã‚¡ã‚¤ãƒ«
 
 CONFIG += testcase
+CONFIG += msvc
+msvc: include(msvc.pri)
 
 IZMLIB_TOP = $${PWD}/../IZMLIB/
 IZMLIB_INC = $${IZMLIB_TOP}/include/
