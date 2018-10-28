@@ -7,6 +7,9 @@
     <Filter Include="src\literals">
       <UniqueIdentifier>{78dd26b1-ace6-4120-881e-1d85c83b7445}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\dbg">
+      <UniqueIdentifier>{6b6b8182-68a0-46d0-b2f8-1466f6064980}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\inifilemanager.cpp">
@@ -49,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="src\literals\literals.h">
       <Filter>src\literals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\dbg\debugstream.h">
+      <Filter>src\dbg</Filter>
+    </ClInclude>
+    <ClInclude Include="src\dbg\dsmanipulator.h">
+      <Filter>src\dbg</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
