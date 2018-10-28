@@ -1,7 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\util.cpp">
+    <Filter Include="src">
+      <UniqueIdentifier>{fc067044-45ab-4b79-8c9c-9448463077b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\literals">
+      <UniqueIdentifier>{78dd26b1-ace6-4120-881e-1d85c83b7445}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\inifilemanager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\inifilemanagerimpl.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\rstring.cpp">
@@ -10,36 +21,34 @@
     <ClCompile Include="src\simpledllloaderwin.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\inifilemanager.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\inifilemanagerimpl.cpp">
+    <ClCompile Include="src\util.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\util.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rstring.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\simpledllloaderwin.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\inifilemanager.h">
-      <Filter>include</Filter>
+    <ClInclude Include="src\inifilemanager.h">
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\inifilemanagerimpl.h">
       <Filter>src</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="include">
-      <UniqueIdentifier>{01b9c609-c698-407d-a638-5da1ad00ca50}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{fc067044-45ab-4b79-8c9c-9448463077b0}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="src\rstring.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\simpledllloaderwin.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\literals\angleliterals.h">
+      <Filter>src\literals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\literals\lengthliterals.h">
+      <Filter>src\literals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\literals\literals.h">
+      <Filter>src\literals</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
