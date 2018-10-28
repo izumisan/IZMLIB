@@ -10,6 +10,23 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\inifilemanager.cpp" />
+    <ClCompile Include="src\inifilemanagerimpl.cpp" />
+    <ClCompile Include="src\rstring.cpp" />
+    <ClCompile Include="src\simpledllloaderwin.cpp" />
+    <ClCompile Include="src\util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\inifilemanager.h" />
+    <ClInclude Include="src\inifilemanagerimpl.h" />
+    <ClInclude Include="src\literals\angleliterals.h" />
+    <ClInclude Include="src\literals\lengthliterals.h" />
+    <ClInclude Include="src\literals\literals.h" />
+    <ClInclude Include="src\rstring.h" />
+    <ClInclude Include="src\simpledllloaderwin.h" />
+    <ClInclude Include="src\util.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{ABC65CD3-B307-4960-BEAD-0ED344DD1009}</ProjectGuid>
     <RootNamespace>IZMLIB</RootNamespace>
@@ -44,12 +61,16 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\literals;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
+      <AdditionalOptions>/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>call $(ProjectDir)makeinclude.bat</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -57,29 +78,19 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(ProjectDir)include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\literals;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
+      <AdditionalOptions>/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <PostBuildEvent>
+      <Command>call $(ProjectDir)makeinclude.bat</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="src\inifilemanager.cpp" />
-    <ClCompile Include="src\inifilemanagerimpl.cpp" />
-    <ClCompile Include="src\rstring.cpp" />
-    <ClCompile Include="src\simpledllloaderwin.cpp" />
-    <ClCompile Include="src\util.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\inifilemanager.h" />
-    <ClInclude Include="include\rstring.h" />
-    <ClInclude Include="include\simpledllloaderwin.h" />
-    <ClInclude Include="include\util.h" />
-    <ClInclude Include="src\inifilemanagerimpl.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
