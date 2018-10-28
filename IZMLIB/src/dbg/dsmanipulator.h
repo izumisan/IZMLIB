@@ -1,14 +1,14 @@
 /*!
-  @file  csmanipulator.h
+  @file  dsmanipulator.h
 */
-#ifndef IZM_DBG_CSMANIPULATOR_H
-#define IZM_DBG_CSMANIPULATOR_H
+#ifndef IZM_DBG_DSMANIPULATOR_H
+#define IZM_DBG_DSMANIPULATOR_H
 
 #include <ctime>
 #include <cstdarg>
 #include <cstring>
 #include <string>
-#include "customstream.h"
+#include "debugstream.h"
 
 // cs << izm::dbg::callerInfo( __FILE__, __LINE__, __func__ ) を
 // cs << CALLERINFO と省略するためのマクロ定義
@@ -24,23 +24,23 @@ namespace dbg
 /*!
   @brief  endlマニピュレーター
 */
-CustomStream& endl( CustomStream& cs )
+DebugStream& endl( DebugStream& ds )
 {
-    cs.eol();
-    cs.flush();
-    return cs;
+    ds.eol();
+    ds.flush();
+    return ds;
 }
 ////////////////////////////////////////////////////////////////////////////////
 /*!
   @brief  timestampマニピュレーター
 */
-CustomStream& timestamp( CustomStream& cs )
+DebugStream& timestamp( DebugStream& ds )
 {
     time_t t = time( nullptr );
     const tm* now = localtime( &t );
     char buff[] = "YYYY-MM-DD hh:mm:ss";
     strftime( buff, sizeof( buff ), "%Y-%m-%d %H:%M:%S", now );
-    return cs << buff;
+    return ds << buff;
 }
 ////////////////////////////////////////////////////////////////////////////////
 /*!
@@ -48,7 +48,7 @@ CustomStream& timestamp( CustomStream& cs )
 */
 class callerInfo
 {
-    friend CustomStream& operator << ( CustomStream& cs, callerInfo manip );
+    friend DebugStream& operator << ( DebugStream& ds, callerInfo manip );
 
 public:
     callerInfo( const std::string& fileName,
@@ -75,9 +75,9 @@ public:
     }
 
 private:
-    CustomStream& operator ()( CustomStream& cs )
+    DebugStream& operator ()( DebugStream& ds )
     {
-        return cs << printf( "%s(%d) %s:", m_fileName.c_str(), m_lineNumber, m_funcName.c_str() );
+        return ds << printf( "%s(%d) %s:", m_fileName.c_str(), m_lineNumber, m_funcName.c_str() );
     }
 
 private:
@@ -87,11 +87,11 @@ private:
 };
 
 /*!
-  @brief  callerInfoクラスを引数に取るCustomStreamの挿入演算子のオーバーロード
+  @brief  callerInfoクラスを引数に取るDebugStreamの挿入演算子のオーバーロード
 */
-CustomStream& operator << ( CustomStream& cs, callerInfo manip )
+DebugStream& operator << ( DebugStream& ds, callerInfo manip )
 {
-    return manip( cs );
+    return manip( ds );
 }
 ////////////////////////////////////////////////////////////////////////////////
 /*!
@@ -99,7 +99,7 @@ CustomStream& operator << ( CustomStream& cs, callerInfo manip )
 */
 class printf
 {
-    friend CustomStream& operator << ( CustomStream& cs, printf manip );
+    friend DebugStream& operator << ( DebugStream& ds, printf manip );
 
 public:
     printf( const char* format, ... )
@@ -116,20 +116,20 @@ public:
         m_buff = std::string( buff );
     }
 private:
-    CustomStream& operator ()( CustomStream& cs )
+    DebugStream& operator ()( DebugStream& ds )
     {
-        return cs << m_buff;
+        return ds << m_buff;
     }
 private:
     std::string m_buff;
 };
 
 /*!
-  @brief  printfクラスを引数にとるCustomStreamの挿入演算子のオーバーロード
+  @brief  printfクラスを引数にとるDebugStreamの挿入演算子のオーバーロード
 */
-CustomStream& operator << ( CustomStream& cs, printf manip )
+DebugStream& operator << ( DebugStream& ds, printf manip )
 {
-    return manip( cs );
+    return manip( ds );
 }
 ////////////////////////////////////////////////////////////////////////////////
 /*!
@@ -137,7 +137,7 @@ CustomStream& operator << ( CustomStream& cs, printf manip )
 */
 class every
 {
-    friend CustomStream& operator << ( CustomStream& cs, every manip );
+    friend DebugStream& operator << ( DebugStream& ds, every manip );
 
 public:
     every( const int onceEveryX )
@@ -145,24 +145,24 @@ public:
     {
     }
 private:
-    CustomStream& operator ()( CustomStream& cs )
+    DebugStream& operator ()( DebugStream& ds )
     {
-        cs.setOnceEvery( m_value );
-        return cs;
+        ds.setOnceEvery( m_value );
+        return ds;
     }
 private:
     int m_value;
 };
 
 /*!
-  @brief  everyクラスを引数にとるCustomStreamの挿入演算子のオーバーロード
+  @brief  everyクラスを引数にとるDebugStreamの挿入演算子のオーバーロード
 */
-CustomStream& operator << ( CustomStream& cs, every manip )
+DebugStream& operator << ( DebugStream& ds, every manip )
 {
-    return manip( cs );
+    return manip( ds );
 }
 
 } // namespace dbg
 } // namespace izm
 
-#endif // IZM_CSMANIPULATOR_H
+#endif // IZM_DBG_DSMANIPULATOR_H

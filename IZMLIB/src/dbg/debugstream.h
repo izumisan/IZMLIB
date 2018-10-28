@@ -1,8 +1,8 @@
 /*!
-  @file  customstream.h
+  @file  debugstream.h
 */
-#ifndef IZM_DBG_CUSTOMSTREAM_H
-#define IZM_DBG_CUSTOMSTREAM_H
+#ifndef IZM_DBG_DEBUGSTREAM_H
+#define IZM_DBG_DEBUGSTREAM_H
 
 #include <iostream>
 #include <fstream>
@@ -17,31 +17,31 @@ namespace dbg
 /*!
   @class  標準出力とファイルの両方に出力するストリーム
 */
-class CustomStream
+class DebugStream
 {
 public:
-    CustomStream()
-        : CustomStream( m_path )
+    DebugStream()
+        : DebugStream( m_path )
     {
     }
 
-    CustomStream( const std::string& path )
+    DebugStream( const std::string& path )
         : m_path( path )
         , m_ofs( path )
     {
     }
 
-    virtual ~CustomStream()
+    virtual ~DebugStream()
     {
         m_ofs.flush();
         m_ofs.close();
     }
 
 public:
-    CustomStream& operator << ( const int value ) { return operator << ( std::to_string( value ) ); }
-    CustomStream& operator << ( const double value ) { return operator << ( std::to_string( value ) ); }
-    CustomStream& operator << ( const char* str ) { return operator << ( std::string( str ) ); }
-    CustomStream& operator << ( const std::string& str )
+    DebugStream& operator << ( const int value ) { return operator << ( std::to_string( value ) ); }
+    DebugStream& operator << ( const double value ) { return operator << ( std::to_string( value ) ); }
+    DebugStream& operator << ( const char* str ) { return operator << ( std::string( str ) ); }
+    DebugStream& operator << ( const std::string& str )
     {
         if ( isTiming() )
         {
@@ -53,9 +53,9 @@ public:
 
     /*!
       @brief  マニピュレータを受け取る挿入演算子
-      @param  [in]  manip  CustomStreamを引数にとり、CustomStreamを返す関数ポインタ
+      @param  [in]  manip  DebugStreamを引数にとり、DebugStreamを返す関数ポインタ
     */
-    CustomStream& operator << ( CustomStream& ( *manip )( CustomStream& ) )
+    DebugStream& operator << ( DebugStream& ( *manip )( DebugStream& ) )
     {
         return ( *manip )( *this );
     }
@@ -79,7 +79,7 @@ public:
     /*!
       @brief  改行コードを出力する
     */
-    CustomStream& eol()
+    DebugStream& eol()
     {
         if ( isTiming() )
         {
@@ -115,7 +115,7 @@ private:
 } // namespace dbg
 } // namespace izm
 
-// マニピュレータ（CustomStreamとセットで使うので、インクルードしておく）
-#include "csmanipulator.h"
+// マニピュレータ（DebugStreamとセットで使うので、インクルードしておく）
+#include "dsmanipulator.h"
 
-#endif // IZM_DBG_CUSTOMSTREAM_H
+#endif // IZM_DBG_DEBUGSTREAM_H
