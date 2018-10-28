@@ -14,7 +14,7 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-include(../IZMLIBTest.pri)
+include(../shared.pri)
 
 SOURCES += tst_inifilemanagertest.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
