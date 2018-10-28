@@ -21,7 +21,7 @@ class DebugStream
 {
 public:
     DebugStream()
-        : DebugStream( m_path )
+        : DebugStream( "izm.debug.log" )
     {
     }
 
@@ -45,8 +45,8 @@ public:
     {
         if ( isTiming() )
         {
-            std::cout << str;
-            m_ofs << str;
+            std::cout << str << " ";
+            m_ofs << str << " ";
         }
         return *this;
     }
@@ -105,7 +105,7 @@ private:
     }
 
 private:
-    std::string m_path = "izm.debug.log";
+    std::string m_path;
     std::ofstream m_ofs;
     unsigned long long m_eolCount = 0uLL;
     int m_onceEveryX = 1;
