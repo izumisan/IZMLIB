@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2013-05-12T20:52:34
+# Project created by QtCreator 2013-05-03T14:27:42
 #
 #-------------------------------------------------
 
@@ -8,13 +8,16 @@ QT       += testlib
 
 QT       -= gui
 
-TARGET = tst_inifilemanagertest
+TARGET = tst_simpledllloaderwintest
 CONFIG   += console
 CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-include(../IZMLIBTest.pri)
+include(../shared.pri)
 
-SOURCES += tst_inifilemanagertest.cpp
+SOURCES += tst_simpledllloaderwintest.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
+
+INCLUDEPATH += $${PWD}/TestDLL/include/
+

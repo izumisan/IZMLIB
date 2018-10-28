@@ -7,4 +7,4 @@ SUBDIRS = \
     LiteralsTest \
     RStringTest \
     SimpleDllLoaderWinTest/SimpleDllLoaderWinTestBuilder.pro \
-    utilTest \
+    UtilTest \
