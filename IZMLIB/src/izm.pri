@@ -11,4 +11,5 @@ HEADERS += \
 SOURCES += \
     $${IZMDIR}/*.cpp
 
+include(dbg/dbg.pri)
 include(literals/literals.pri)
