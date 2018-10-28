@@ -21,27 +21,26 @@ class CustomStream
 {
 public:
     CustomStream()
+        : CustomStream( m_path )
     {
     }
 
     CustomStream( const std::string& path )
-        : m_ofs( path )
+        : m_path( path )
+        , m_ofs( path )
     {
     }
 
     virtual ~CustomStream()
     {
+        m_ofs.flush();
+        m_ofs.close();
     }
 
 public:
-    CustomStream& operator << ( const int value )
-    {
-        return operator << ( std::to_string( value ) );
-    }
-    CustomStream& operator << ( const double value )
-    {
-        return operator << ( std::to_string( value ) );
-    }
+    CustomStream& operator << ( const int value ) { return operator << ( std::to_string( value ) ); }
+    CustomStream& operator << ( const double value ) { return operator << ( std::to_string( value ) ); }
+    CustomStream& operator << ( const char* str ) { return operator << ( std::string( str ) ); }
     CustomStream& operator << ( const std::string& str )
     {
         if ( isTiming() )
@@ -59,6 +58,14 @@ public:
     CustomStream& operator << ( CustomStream& ( *manip )( CustomStream& ) )
     {
         return ( *manip )( *this );
+    }
+
+public:
+    /*!
+    */
+    std::string path() const
+    {
+        return m_path;
     }
 
     /*!
@@ -98,8 +105,9 @@ private:
     }
 
 private:
-    std::ofstream m_ofs = std::ofstream("izm.debug.log");
-    unsigned long long m_eolCount = 0uLL:
+    std::string m_path = "izm.debug.log";
+    std::ofstream m_ofs;
+    unsigned long long m_eolCount = 0uLL;
     int m_onceEveryX = 1;
     unsigned long long m_baseCount = 0uLL;
 };
@@ -107,8 +115,7 @@ private:
 } // namespace dbg
 } // namespace izm
 
-// マニピュレータ
+// マニピュレータ（CustomStreamとセットで使うので、インクルードしておく）
 #include "csmanipulator.h"
 
 #endif // IZM_DBG_CUSTOMSTREAM_H
-
