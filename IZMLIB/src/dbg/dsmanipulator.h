@@ -44,6 +44,44 @@ DebugStream& timestamp( DebugStream& ds )
 }
 ////////////////////////////////////////////////////////////////////////////////
 /*!
+  @class printfマニピュレーター
+*/
+class printf
+{
+    friend DebugStream& operator << ( DebugStream& ds, printf manip );
+
+public:
+    printf( const char* format, ... )
+        : m_buff()
+    {
+        char buff[1024] = {};
+        memset( buff, 0x00, sizeof( buff ) );
+
+        va_list valist;
+        va_start( valist, format );
+        vsnprintf( buff, sizeof( buff ), format, valist );
+        va_end( valist );
+
+        m_buff = std::string( buff );
+    }
+private:
+    DebugStream& operator ()( DebugStream& ds )
+    {
+        return ds << m_buff;
+    }
+private:
+    std::string m_buff;
+};
+
+/*!
+  @brief  printfクラスを引数にとるDebugStreamの挿入演算子のオーバーロード
+*/
+DebugStream& operator << ( DebugStream& ds, printf manip )
+{
+    return manip( ds );
+}
+////////////////////////////////////////////////////////////////////////////////
+/*!
   @class  callerInfoマニピュレーター
 */
 class callerInfo
@@ -90,44 +128,6 @@ private:
   @brief  callerInfoクラスを引数に取るDebugStreamの挿入演算子のオーバーロード
 */
 DebugStream& operator << ( DebugStream& ds, callerInfo manip )
-{
-    return manip( ds );
-}
-////////////////////////////////////////////////////////////////////////////////
-/*!
-  @class printfマニピュレーター
-*/
-class printf
-{
-    friend DebugStream& operator << ( DebugStream& ds, printf manip );
-
-public:
-    printf( const char* format, ... )
-        : m_buff()
-    {
-        char buff[1024] = {};
-        memset( buff, 0x00, sizeof( buff ) );
-
-        va_list valist;
-        va_start( valist, format );
-        vsnprintf( buff, sizeof( buff ), format, valist );
-        va_end( valist );
-
-        m_buff = std::string( buff );
-    }
-private:
-    DebugStream& operator ()( DebugStream& ds )
-    {
-        return ds << m_buff;
-    }
-private:
-    std::string m_buff;
-};
-
-/*!
-  @brief  printfクラスを引数にとるDebugStreamの挿入演算子のオーバーロード
-*/
-DebugStream& operator << ( DebugStream& ds, printf manip )
 {
     return manip( ds );
 }

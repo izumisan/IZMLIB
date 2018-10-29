@@ -72,8 +72,11 @@ public:
     */
     void setOnceEvery( const int x )
     {
-        m_onceEveryX = (std::max)( 1, x );  // maxマクロの展開抑制のため、()で囲む
-        m_baseCount = m_eolCount;
+        if ( m_onceEveryX != x )
+        {
+            m_onceEveryX = (std::max)( 1, x );  // maxマクロの展開抑制のため、()で囲む
+            m_baseCount = m_eolCount;
+        }
     }
 
     /*!
