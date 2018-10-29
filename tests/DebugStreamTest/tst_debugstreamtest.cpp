@@ -28,7 +28,7 @@ private Q_SLOTS:
     void timestampTest();
     void callerInfoTest();
     void printfTest();
-    void everyTest();
+    void eachTest();
 
 private:
     QList<QString> fileContents( const QString& path ) const;
@@ -207,9 +207,9 @@ void DebugStreamTest::printfTest()
 }
 //==============================================================================
 /*!
-  @brief  everyマニピュレーターテスト
+  @brief  eachマニピュレーターテスト
 */
-void DebugStreamTest::everyTest()
+void DebugStreamTest::eachTest()
 {
     const auto&& path = std::string( QTest::currentTestFunction() ) + ".log";
     QFile logfile( path.c_str() );
@@ -222,7 +222,7 @@ void DebugStreamTest::everyTest()
     auto&& stream = izm::dbg::DebugStream( path );
     for ( int i = 0; i < 64; ++i )
     {
-        stream << izm::every(4) << i << izm::endl;
+        stream << izm::each(4) << i << izm::endl;
     }
     QCOMPARE( logfile.exists(), true );
 

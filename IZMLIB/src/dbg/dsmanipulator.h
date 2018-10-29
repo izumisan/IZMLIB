@@ -133,14 +133,14 @@ DebugStream& operator << ( DebugStream& ds, callerInfo manip )
 }
 ////////////////////////////////////////////////////////////////////////////////
 /*!
-  @class everyマニピュレーター
+  @class eachマニピュレーター
 */
-class every
+class each
 {
-    friend DebugStream& operator << ( DebugStream& ds, every manip );
+    friend DebugStream& operator << ( DebugStream& ds, each manip );
 
 public:
-    every( const int onceEveryX )
+    each( const int onceEveryX )
         : m_value( onceEveryX )
     {
     }
@@ -155,9 +155,9 @@ private:
 };
 
 /*!
-  @brief  everyクラスを引数にとるDebugStreamの挿入演算子のオーバーロード
+  @brief  eachクラスを引数にとるDebugStreamの挿入演算子のオーバーロード
 */
-DebugStream& operator << ( DebugStream& ds, every manip )
+DebugStream& operator << ( DebugStream& ds, each manip )
 {
     return manip( ds );
 }

@@ -10,7 +10,7 @@ using dbg::endl;
 using dbg::timestamp;
 using dbg::callerInfo;
 using dbg::printf;
-using dbg::every;
+using dbg::each;
 }
 #endif
 
