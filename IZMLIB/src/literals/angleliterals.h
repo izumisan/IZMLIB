@@ -31,8 +31,4 @@ constexpr double operator""_rad ( const long double rad )
 } // namespace literals
 } // namespace izm
 
-#if !defined(NO_USING_IZM_LITERALS)
-using namespace izm::literals;
-#endif
-
 #endif // IZM_LITERALS_ANGLELITERALS_H
