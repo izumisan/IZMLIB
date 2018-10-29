@@ -118,7 +118,4 @@ private:
 } // namespace dbg
 } // namespace izm
 
-// マニピュレータ（DebugStreamとセットで使うので、インクルードしておく）
-#include "dsmanipulator.h"
-
 #endif // IZM_DBG_DEBUGSTREAM_H

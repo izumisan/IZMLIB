@@ -45,8 +45,4 @@ constexpr double operator""_mm( const long double mm )
 } // namespace literals
 } // namespace izm
 
-#if !defined(NO_USING_IZM_LITERALS)
-using namespace izm::literals;
-#endif
-
 #endif // IZM_LITERALS_LENGTHLITERALS_H
