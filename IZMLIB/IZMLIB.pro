@@ -5,9 +5,10 @@ TEMPLATE = lib
 
 CONFIG -= lib_bundle
 CONFIG += c++14
-CONFIG += msvc
 
-msvc: include(msvc.pri)
+win32-msvc {
+    include(msvc.pri)
+}
 
 IZMLIBDIR = $${PWD}
 
@@ -21,6 +22,6 @@ include(src/izm.pri)
 
 OTHER_FILES += $${IZMLIBDIR}/makeinclude.bat
 
-msvc {
+win32-msvc {
     QMAKE_POST_LINK += $$quote(call makeinclude.bat)
 }
