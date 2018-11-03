@@ -59,5 +59,8 @@
     <ClInclude Include="src\dbg\dsmanipulator.h">
       <Filter>src\dbg</Filter>
     </ClInclude>
+    <ClInclude Include="src\enummap.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

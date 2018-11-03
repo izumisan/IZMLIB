@@ -4,6 +4,7 @@ CONFIG += ordered
 
 SUBDIRS = \
     DebugStreamTest \
+    EnumMapTest \
     IniFileManagerTest \
     LiteralsTest \
     RStringTest \

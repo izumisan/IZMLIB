@@ -20,6 +20,7 @@
   <ItemGroup>
     <ClInclude Include="src\dbg\debugstream.h" />
     <ClInclude Include="src\dbg\dsmanipulator.h" />
+    <ClInclude Include="src\enummap.h" />
     <ClInclude Include="src\inifilemanager.h" />
     <ClInclude Include="src\inifilemanagerimpl.h" />
     <ClInclude Include="src\literals\angleliterals.h" />
