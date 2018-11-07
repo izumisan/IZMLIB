@@ -19,6 +19,10 @@ private Q_SLOTS:
     void cleanup();
 
     void test_split();
+
+    void replace_test_data();
+    void replace_test();
+
     void test_trim_ltrim_rtrim();
 };
 
@@ -63,6 +67,37 @@ void UtilTest::test_split()
     QCOMPARE( strList.at(0).c_str(), "aaa" );
     QCOMPARE( strList.at(1).c_str(), "bbb" );
     QCOMPARE( strList.at(2).c_str(), "ccc" );
+}
+//==============================================================================
+/*
+*/
+void UtilTest::replace_test_data()
+{
+    QTest::addColumn<QString>("_input");
+    QTest::addColumn<QString>("_before");
+    QTest::addColumn<QString>("_after");
+    QTest::addColumn<QString>("_expected");
+
+    QTest::newRow("case1") << "abcde" << "bcd" << "XYZ" << "aXYZe";
+    QTest::newRow("case2") << "abcdeabcde" << "bcd" << "XYZ" << "aXYZeaXYZe";
+    QTest::newRow("case3") << "a b c d e" << " " << "" << "abcde";
+    QTest::newRow("case4") << "a b c d e" << "" << "X" << "a b c d e";
+    QTest::newRow("case5") << "xxx" << "x" << "xxx" << "xxxxxxxxx";
+}
+/*
+*/
+void UtilTest::replace_test()
+{
+    QFETCH( QString, _input );
+    QFETCH( QString, _before );
+    QFETCH( QString, _after );
+    QFETCH( QString, _expected );
+
+    auto&& actual = izm::replace( _input.toStdString(),
+                                  _before.toStdString(),
+                                  _after.toStdString() );
+
+    QCOMPARE( actual, _expected.toStdString() );
 }
 //==============================================================================
 /*
