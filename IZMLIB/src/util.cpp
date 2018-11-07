@@ -46,6 +46,34 @@ std::vector<std::string> split( const std::string& str, const std::string& delim
 }
 
 /*!
+  @brief  文字列を指定した文字列で置換する
+  @param  [in]  str     文字列
+  @param  [in]  before  置換前
+  @param  [in]  after   置換後
+  @return 置換後の文字列
+*/
+std::string replace( const std::string& str, const std::string& before, const std::string& after )
+{
+    auto&& ret = std::string( str );
+    if ( !before.empty() )
+    {
+        std::string::size_type foundIdx = 0;
+        std::string::size_type startIdx = 0;
+        while ( ( foundIdx = ret.find_first_of( before, startIdx ) ) != std::string::npos )
+        {
+            ret.replace( foundIdx, before.size(), after );
+
+            startIdx = foundIdx + after.size();
+            if ( ret.size() <= startIdx )
+            {
+                break;
+            }
+        }
+    }
+    return ret;
+}
+
+/*!
   @brief  前後の空白類文字を全て取り除く
   @param  [in]  str  文字列
   @return 前後の空白類文字を全て取り除いた文字列
