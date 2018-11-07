@@ -12,6 +12,7 @@ namespace izm
 {
 
 std::vector<std::string> split( const std::string& str, const std::string& delimiter = " " );
+std::string replace( const std::string& str, const std::string& before, const std::string& after );
 
 std::string trim( const std::string& str );
 std::string ltrim( const std::string& str );
