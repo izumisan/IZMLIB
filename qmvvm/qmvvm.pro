@@ -19,10 +19,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+BINDIR = $${PWD}/../bin
+LIBDIR = $${PWD}/lib
+
 CONFIG(debug, debug|release) {
-    DLLDESTDIR = $${PWD}/../bin/debug
+    DESTDIR = $${LIBDIR}/debug
+    DLLDESTDIR = $${BINDIR}/debug
 } else {
-    DLLDESTDIR = $${PWD}/../bin/release
+    DESTDIR = $${LIBDIR}/release
+    DLLDESTDIR = $${BINDIR}/release
 }
 
 unix {
@@ -32,3 +37,5 @@ unix {
 
 msvc: include(msvc.pri)
 include(qmvvm.pri)
+
+DISTFILES += qmvvmlib.pri

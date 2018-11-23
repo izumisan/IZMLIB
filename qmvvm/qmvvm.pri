@@ -1,3 +1,5 @@
+# qmvvm.pri
+
 INCDIR = $${PWD}/include
 SRCDIR = $${PWD}/src
 

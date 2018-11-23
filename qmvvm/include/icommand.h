@@ -19,8 +19,9 @@ public:
     explicit ICommand( QObject* parent = nullptr ) : QObject(parent) {}
     virtual ~ICommand() = default;
 
-public:
+public Q_SLOTS:
     virtual void execute() = 0;
+public:
     virtual bool canExecute() const = 0;
     virtual void raiseCanExecute() const = 0;
 };

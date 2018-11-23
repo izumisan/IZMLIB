@@ -22,8 +22,9 @@ public:
                   const std::function<bool()>& canExecute );
     virtual ~RelayCommand() = default;
 
-public:
+public Q_SLOTS:
     virtual void execute() override;
+public:
     virtual bool canExecute() const override;
     virtual void raiseCanExecute() const override;
 
