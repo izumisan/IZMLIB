@@ -19,14 +19,15 @@ public:
                   const std::function<void()>& execute );
     RelayCommand( QObject* parent,
                   const std::function<void()>& execute,
-                  const std::function<bool()>& canExecute );
+                  const std::function<bool()>& canExecute,
+                  const bool autoRaise = false );
     virtual ~RelayCommand() = default;
 
 public Q_SLOTS:
     virtual void execute() override;
 public:
     virtual bool canExecute() const override;
-    virtual void raiseCanExecute() const override;
+    virtual void raiseCanExecuteChanged() const override;
 
 private:
     std::function<void()> m_execute = []{};

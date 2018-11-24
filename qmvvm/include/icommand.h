@@ -23,7 +23,7 @@ public Q_SLOTS:
     virtual void execute() = 0;
 public:
     virtual bool canExecute() const = 0;
-    virtual void raiseCanExecute() const = 0;
+    virtual void raiseCanExecuteChanged() const = 0;
 };
 
 } // namespace qmvvm
