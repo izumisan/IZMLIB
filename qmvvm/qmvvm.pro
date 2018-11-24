@@ -38,4 +38,6 @@ unix {
 msvc: include(msvc.pri)
 include(qmvvm.pri)
 
+RESOURCES += qmvvm.qrc
+
 DISTFILES += qmvvmlib.pri
