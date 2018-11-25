@@ -10,14 +10,8 @@ namespace qmvvm
 
 AsyncCommand::AsyncCommand( QObject* parent,
               const std::function<void()>& execute )
-    : ICommand( parent )
-    , m_execute( execute )
+    : AsyncCommand( parent, execute, []{return true;}, false )
 {
-    assert( m_execute != nullptr );
-    connect ( this, &AsyncCommand::completed,
-              this, [this] { setReady( true ); },
-              Qt::QueuedConnection);
-    setReady( true );
 }
 
 AsyncCommand::AsyncCommand( QObject* parent,
@@ -51,13 +45,16 @@ AsyncCommand::AsyncCommand( QObject* parent,
 
 void AsyncCommand::execute()
 {
-    setReady( false );
-    m_task = std::async( std::launch::async, [this]
+    if ( ready() )
     {
-        Q_EMIT start();
-        m_execute();
-        Q_EMIT completed();
-    } );
+        setReady( false );
+        m_task = std::async( std::launch::async, [this]
+        {
+            Q_EMIT start();
+            m_execute();
+            Q_EMIT completed();
+        } );
+    }
 }
 
 bool AsyncCommand::canExecute() const
