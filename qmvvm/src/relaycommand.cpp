@@ -9,10 +9,8 @@ namespace qmvvm
 
 RelayCommand::RelayCommand( QObject* parent,
               const std::function<void()>& execute )
-    : ICommand( parent )
-    , m_execute( execute )
+    : RelayCommand( parent, execute, []{return true;}, false )
 {
-    assert( m_execute != nullptr );
 }
 
 RelayCommand::RelayCommand( QObject* parent,
