@@ -14,6 +14,9 @@ namespace qmvvm
 class IZMQMVVMSHARED_EXPORT AsyncCommand : public ICommand
 {
     Q_OBJECT
+Q_SIGNALS:
+    void start() const;
+    void completed() const;
 
 public:
     AsyncCommand( QObject* parent,
@@ -29,11 +32,15 @@ public Q_SLOTS:
 public:
     virtual bool canExecute() const override;
     virtual void raiseCanExecuteChanged() const override;
+private:
+    bool ready() const;
+    void setReady( const bool value );
 
 private:
     std::function<void()> m_execute = []{};
     std::function<bool()> m_canExecute = []{return true;};
     std::future<void> m_task = {};
+    bool m_ready = false;
 };
 
 } // namespace qmvvm

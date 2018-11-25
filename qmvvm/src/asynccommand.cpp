@@ -14,6 +14,10 @@ AsyncCommand::AsyncCommand( QObject* parent,
     , m_execute( execute )
 {
     assert( m_execute != nullptr );
+    connect ( this, &AsyncCommand::completed,
+              this, [this] { setReady( true ); },
+              Qt::QueuedConnection);
+    setReady( true );
 }
 
 AsyncCommand::AsyncCommand( QObject* parent,
@@ -37,21 +41,47 @@ AsyncCommand::AsyncCommand( QObject* parent,
 
         CommandManager::instance()->start();
     }
+
+    connect ( this, &AsyncCommand::completed,
+              this, [this] { setReady( true ); },
+              Qt::QueuedConnection);
+
+    setReady( true );
 }
 
 void AsyncCommand::execute()
 {
-    m_task = std::async( std::launch::async, [this]{ m_execute(); } );
+    setReady( false );
+    m_task = std::async( std::launch::async, [this]
+    {
+        Q_EMIT start();
+        m_execute();
+        Q_EMIT completed();
+    } );
 }
 
 bool AsyncCommand::canExecute() const
 {
-    return m_canExecute();
+    return ready() ? m_canExecute() : false;
 }
 
 void AsyncCommand::raiseCanExecuteChanged() const
 {
     Q_EMIT canExecuteChanged();
+}
+
+bool AsyncCommand::ready() const
+{
+    return m_ready;
+}
+
+void AsyncCommand::setReady( const bool value )
+{
+    if ( m_ready != value )
+    {
+        m_ready = value;
+        raiseCanExecuteChanged();
+    }
 }
 
 } // namespace qmvvm
