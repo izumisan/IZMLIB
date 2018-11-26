@@ -1,7 +1,6 @@
 # qmvvmlib.pri
 
-INCDIR = $${PWD}/include
-LIBDIR = $${PWD}/lib
+include($${PWD}/shared.pri)
 
 INCLUDEPATH += $${INCDIR}
 
@@ -10,6 +9,3 @@ CONFIG(debug, debug|release) {
 } else {
     msvc: LIBS += $$quote($${LIBDIR}/release/izm.qmvvm.lib)
 }
-
-QML_IMPORT_PATH = $${PWD}/qml
-RESOURCES += $${PWD}/qmvvm.qrc

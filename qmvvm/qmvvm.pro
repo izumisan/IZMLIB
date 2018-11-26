@@ -19,8 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-BINDIR = $${PWD}/bin
-LIBDIR = $${PWD}/lib
+include(qmvvm.pri)
 
 CONFIG(debug, debug|release) {
     DESTDIR = $${LIBDIR}/debug
@@ -34,10 +33,5 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
-
-msvc: include(msvc.pri)
-include(qmvvm.pri)
-
-RESOURCES += qmvvm.qrc
 
 DISTFILES += qmvvmlib.pri

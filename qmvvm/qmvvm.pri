@@ -1,7 +1,6 @@
 # qmvvm.pri
 
-INCDIR = $${PWD}/include
-SRCDIR = $${PWD}/src
+include($${PWD}/shared.pri)
 
 INCLUDEPATH += \
     $${INCDIR} \
