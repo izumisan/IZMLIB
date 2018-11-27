@@ -6,3 +6,5 @@
     - 共有ライブラリを利用するのではなく、アプリケーションに組み込んだプログラム
 1. CommandManager
     - CommandManagerを利用したサンプルプログラム
+1. Commands
+    - 各Commandクラスの比較サンプルプログラム
