@@ -36,7 +36,7 @@ AsyncCommand::AsyncCommand( QObject* parent,
         CommandManager::instance()->start();
     }
 
-    connect ( this, &AsyncCommand::completed,
+    connect ( this, &AsyncCommand::finished,
               this, [this] { setReady( true ); },
               Qt::QueuedConnection);
 
@@ -52,7 +52,7 @@ void AsyncCommand::execute()
         {
             Q_EMIT start();
             m_execute();
-            Q_EMIT completed();
+            Q_EMIT finished();
         } );
     }
 }

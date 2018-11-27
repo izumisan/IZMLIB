@@ -16,7 +16,7 @@ class IZMQMVVMSHARED_EXPORT AsyncCommand : public ICommand
     Q_OBJECT
 Q_SIGNALS:
     void start() const;
-    void completed() const;
+    void finished() const;
 
 public:
     AsyncCommand( QObject* parent,
