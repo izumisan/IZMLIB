@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>qml/izm/qmvvm/Command.qml</file>
-        <file>qml/izm/qmvvm/qmldir</file>
-    </qresource>
-</RCC>
